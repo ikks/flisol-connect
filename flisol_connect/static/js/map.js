@@ -9,7 +9,6 @@ function load_map() {
         osm = new L.TileLayer(osmUrl, {maxZoom: 13, attribution: osmAttribution});
 
     map.setView(new L.LatLng(-8 , -70), 3).addLayer(osm);
-    map.on('click', onMapClick);
     L.marker([2.939, -75.29455]).addTo(map).bindPopup('Neiva, 23 de Abril de 2.015');
     L.marker([-22.9209, -43.25151]).addTo(map).bindPopup('Río de Janeiro, 24 de Abril de 2.015');
     L.marker([20.37778, -76.6444]).addTo(map).bindPopup('Bayamo, 24 de Abril de 2.015');
@@ -59,9 +58,6 @@ function addr_search() {
             $('<p>', { html: "No results found" }).appendTo('#results');
         }
     });
-}
-function onMapClick(e) {
-    alert(e.latlng.toString())
 }
 
 $(function() {
