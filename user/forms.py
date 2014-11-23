@@ -1,3 +1,5 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import PasswordResetForm
@@ -47,7 +49,7 @@ class CustomPasswordResetForm(PasswordResetForm):
         User = get_user_model()
         active_users = User.objects.filter(email__iexact=email, is_active=True)
         for user in active_users:
-            subject = u'Gecolsa - Restablecer la contraseña'
+            subject = u'Flisol - Restablecer la contraseña'
             send_email(
                 subject,
                 [user.email],
@@ -91,23 +93,8 @@ class UserRegistrationForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email',
-            HTML(u'''
-                El titular de la información que diligencie el formulario de
-                nuestro de este link _____________________________
-                (Dirección URL del site de SATISFACCIÓN AL CLIENTE/QUEJAS Y
-                RECLAMOS. "SATISFACCiON AL CUENTE/QUEJAS Y RECLAMOS",
-                manifiesta en forma libre y expresa que los datos personales e
-                información suministrada, está aceptando y autorizando
-                a GECOLSA para que incluya esta información en su base de
-                datos y pueda hacer uso de la misma para efectos de estudios
-                de mercados, publicidad, compartir con fábrica o cualquier
-                otro tipo de uso comercial propio de la Compañia, bajo
-                la normatividad vigente y la politica de Tratamiento de
-                la Información y Datos Personales de GECOLSA (Link: legal).
-                El Titular de la información podrá en cualquier momento
-                aclarar, completar, rectificar o solicitar la eliminación de
-                esta información, contactándose al correo electrónico:
-                comunicados@gecolsa.com.co.
+            HTML(u'''No usaremos ni venderemos tus datos, solicitaremos
+                la mínima cantidad necesaria para garantizar tu privacidad.
             '''),
             'is_accepted',
             'captcha',

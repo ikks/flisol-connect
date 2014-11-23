@@ -27,6 +27,6 @@ class UserRegistrationView(CreateView):
     def form_valid(self, form):
         messages.success(
             self.request,
-            u'Se suscribió a Gecolsa.',
+            u'Bienvenid@ al Flisol',
         )
         return super(UserRegistrationView, self).form_valid(form)

@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
@@ -61,7 +60,7 @@ class CustomUserCreationForm(forms.ModelForm):
 
 
 @admin.register(User)
-class GecolsaUserAdmin(UserAdmin):
+class FlisolUserAdmin(UserAdmin):
     u"""Administración de Usuarios
     """
     form = CustomUserChangeForm
@@ -123,14 +122,14 @@ class GecolsaUserAdmin(UserAdmin):
     ordering = ('first_name',)
 
     def get_actions(self, request):
-        actions = super(GecolsaUserAdmin, self).get_actions(request)
+        actions = super(FlisolUserAdmin, self).get_actions(request)
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
 
     def get_readonly_fields(self, request, obj=None):
         return (
-            super(GecolsaUserAdmin, self).get_readonly_fields(request, obj)
+            super(FlisolUserAdmin, self).get_readonly_fields(request, obj)
             + ('last_login', 'date_joined')
         )
 
@@ -141,4 +140,4 @@ class GecolsaUserAdmin(UserAdmin):
         return request.user.is_superuser
 
     def has_delete_permission(self, request, obj=None):
-        return request.user.is_superuser
+        return False

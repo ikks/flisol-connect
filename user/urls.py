@@ -23,7 +23,7 @@ urlpatterns = patterns(
         name='login',
     ),
 
-    url(r'^my-gecolsa/$', UserDetailView.as_view(), name='my_gecolsa'),
+    url(r'^usuario/$', UserDetailView.as_view(), name='me'),
 
     url(
         r'^logout/$',
