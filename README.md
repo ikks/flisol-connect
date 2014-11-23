@@ -7,8 +7,11 @@ Presencia web en el Flisol como se describe en http://flisol.info/CT/PresenciaWe
 Mapa de ruta
 ============
 
-Hacer la estructura de backend para soportar los modelos de datos persistentes
-necesarios y las notificaciones en tiempo real junto con la opción de
+- [X] Hacer la estructura de backend para soportar los modelos de datos persistentes
+necesarios
+- [ ] Usar autenticación con github, bitbucket, openstreetmap, facebook y googleplus.
+- [ ] Implementar los casos de uso para solicitar y registrar una instancia y un equipo
+- [ ] las notificaciones en tiempo real junto con la opción de
 autenticarse en el sitio para poder crear una sede.
 
 Contribuir
