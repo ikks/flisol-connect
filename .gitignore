@@ -49,6 +49,7 @@ coverage.xml
 db.sqlite3
 /static
 local_settings.py
+uploads/
 
 # Sphinx documentation
 docs/_build/

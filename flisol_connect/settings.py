@@ -31,6 +31,7 @@ TEST_PROJECT_APPS = (
     'flisol_connect',
     'user',
     'common',
+    'flisol_event',
 )
 
 

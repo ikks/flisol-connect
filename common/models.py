@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.conf import settings
-from django.contrib.auth import get_user_model
 from django.utils.translation import ugettext as _
+
 
 class Country(models.Model):
     """Country Model"""
@@ -54,6 +54,7 @@ class Country(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('created by'),
+        related_name='countries_created',
     )
 
     def __unicode__(self):
@@ -100,6 +101,7 @@ class Distribution(models.Model):
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('created by'),
+        related_name='distros_created',
     )
 
     def __unicode__(self):
