@@ -30,11 +30,12 @@ ALLOWED_HOSTS = []
 TEST_PROJECT_APPS = (
     'flisol_connect',
     'user',
+    'common',
 )
 
 
 INSTALLED_APPS = TEST_PROJECT_APPS + (
-    'grappelli',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
