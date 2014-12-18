@@ -19,12 +19,14 @@ class Country(models.Model):
 
     description = models.TextField(
         verbose_name=_('description'),
+        blank=True,
     )
 
     logo_flag = models.ImageField(
         max_length=255,
         upload_to='common/flag/',
         verbose_name=_('flag icon'),
+        blank=True,
     )
 
     image = models.ImageField(
