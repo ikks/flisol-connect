@@ -67,7 +67,7 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^suscribarse/$',
+        r'^suscribirse/$',
         UserRegistrationView.as_view(),
         name='registration',
     ),

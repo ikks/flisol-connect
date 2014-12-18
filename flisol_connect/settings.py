@@ -44,8 +44,12 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms',
     'debug_toolbar',
     'django_extensions',
+    'captcha',
+    'braces',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -59,7 +63,21 @@ MIDDLEWARE_CLASSES = (
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
+AUTHENTICATION_BACKENDS = (
+    'social.backends.persona.PersonaAuth',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'social.apps.django_app.context_processors.backends',
+    'social.apps.django_app.context_processors.login_redirect',
+)
+
+LOGIN_REDIRECT_URL = '/'
 
 ROOT_URLCONF = 'flisol_connect.urls'
 
@@ -103,6 +121,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/uploads/'
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.auth_allowed',
+    'social.pipeline.social_auth.social_user',
+    'social.pipeline.mail.mail_validation',
+    'social.pipeline.social_auth.associate_by_email',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+)
+
+# django-recaptcha
+RECAPTCHA_PUBLIC_KEY = ''
+RECAPTCHA_PRIVATE_KEY = ''
 
 import sys
 if 'test' in sys.argv:

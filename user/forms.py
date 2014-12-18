@@ -10,7 +10,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.conf import settings
 
-from app.utils import send_email
+# from app.utils import send_email
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
@@ -50,18 +50,18 @@ class CustomPasswordResetForm(PasswordResetForm):
         active_users = User.objects.filter(email__iexact=email, is_active=True)
         for user in active_users:
             subject = u'Flisol - Restablecer la contraseña'
-            send_email(
-                subject,
-                [user.email],
-                email_template_name,
-                {
-                    'email': user.email,
-                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                    'user': user,
-                    'token': token_generator.make_token(user),
-                    'protocol': settings.PROTOCOL,
-                },
-            )
+            # send_email(
+            #     subject,
+            #     [user.email],
+            #     email_template_name,
+            #     {
+            #         'email': user.email,
+            #         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+            #         'user': user,
+            #         'token': token_generator.make_token(user),
+            #         'protocol': settings.PROTOCOL,
+            #     },
+            # )
 
 
 class CustomSetPasswordForm(SetPasswordForm):
@@ -74,7 +74,7 @@ class CustomSetPasswordForm(SetPasswordForm):
 
 class UserRegistrationForm(forms.ModelForm):
     is_accepted = forms.BooleanField(
-        label=u'Acepto los terminos aquí contenidos para trabajar con nosotros',
+        label=u'Acepto los términos para unirme al sitio',
     )
     captcha = ReCaptchaField()
 

@@ -6,6 +6,16 @@
         <link rel="stylesheet" type="text/css" href="/static/css/site.css">
     </head>
     <body>
+    {% block content %}
+    {% if user.is_authenticated %}
+        {{ user.email }} <a href="{% url 'user:logout' %}">X</a>
+        {% if user.is_staff %}<a href="{% url 'admin:index' %}">admin{% endif %}</a>
+    {% else %}
+        <form method="post" action="/complete/persona/">
+            <input type="hidden" name="assertion" value="" />
+            <a rel="nofollow" id="persona" href="#">Mozilla Persona</a>
+        </form> <a href="{% url 'user:login' %}">Ingresa</a>
+    {% endif %}
         <div id="map"></div>
         <div id="search">
             <p>¿Dónde es tu Flisol?</p>
@@ -15,9 +25,33 @@
                 <div id="results"></div>
             </form>
         </div>
+    {% endblock %}
+    {% block js %}
         <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
         <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="https://login.persona.org/include.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#persona').click(function (e) {
+                    e.preventDefault();
+                    var self = $(this);
+
+                    navigator.id.get(function (assertion) {
+                        if (assertion) {
+                            self.parent('form')
+                                    .find('input[type=hidden]')
+                                        .attr('value', assertion)
+                                        .end()
+                                    .submit();
+                        } else {
+                            alert('Some error occurred');
+                        }
+                    });
+                });
+            });
+        </script>
         <script src="/static/js/map.js"></script>
+    {% endblock %}
     </body>
 </html>
