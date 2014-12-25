@@ -48,6 +48,7 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
     'debug_toolbar',
     'django_extensions',
     'captcha',
+    'foundation',
     'braces',
     'social.apps.django_app.default',
 )

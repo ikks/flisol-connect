@@ -6,14 +6,51 @@
 {% block bare_title %}BIENVENIDO, INGRESA A TU CUENTA{% endblock %}
 
 {% block content %}
-<div class="js-login-form">
+<div class="js-login-form" class="text-center">
     <p class="text-center">INGRESA CON:</p>
 
-    <form method="post" action="">
+    <form method="post" action="" class="login-form">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="hidden" name="next" value="{{ next }}">
-        <button class="btn btn-green">INGRESAR</button>
+        <button class="btn align-center">INGRESAR</button>
+    </form>
+</div>
+<div  class="text-center">
+    <p>O con tu red social</p>
+    <form method="post" action="/complete/persona/">
+        <input type="hidden" name="assertion" value="" />
+        <a rel="nofollow" id="persona" href="#"><i class="step fi-torso">Mozilla Persona</i></a>
+    <a rel="nofollow" href="#"><i class="step fi-social-google-plus">G+</i></a>
+    <a rel="nofollow" href="#"><i class="step fi-magnifying-glass">OSM</i></a>
+    <a rel="nofollow" href="#"><i class="step fi-social-twitter">Twitter</i></a>
+    <a rel="nofollow" href="#"><i class="step fi-social-facebook">Facebook</i></a>
     </form>
 </div>
 {% endblock %}
+
+{% block body_js %}
+ <script src="https://login.persona.org/include.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#persona').click(function (e) {
+            e.preventDefault();
+            var self = $(this);
+
+            navigator.id.get(function (assertion) {
+                if (assertion) {
+                    self.parent('form')
+                            .find('input[type=hidden]')
+                                .attr('value', assertion)
+                                .end()
+                            .submit();
+                } else {
+                    alert('Some error occurred');
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
+
+{% block login %}{% endblock %}

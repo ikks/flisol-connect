@@ -1,57 +1,88 @@
-<html>
-    <head>
-    <meta charset="utf-8">
-        <title>Leaflet and Nominatim example</title>
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-        <link rel="stylesheet" type="text/css" href="/static/css/site.css">
-    </head>
-    <body>
-    {% block content %}
-    {% if user.is_authenticated %}
-        {{ user.email }} <a href="{% url 'user:logout' %}">X</a>
-        {% if user.is_staff %}<a href="{% url 'admin:index' %}">admin{% endif %}</a>
-    {% else %}
-        <form method="post" action="/complete/persona/">
-            <input type="hidden" name="assertion" value="" />
-            <a rel="nofollow" id="persona" href="#">Mozilla Persona</a>
-        </form> <a href="{% url 'user:login' %}">Ingresa</a>
-    {% endif %}
-        <div id="map"></div>
-        <div id="search">
-            <p>¿Dónde es tu Flisol?</p>
-            <form>
-                <input type="text" name="addr" value="" id="addr" size="10" />
-                <button type="button" onclick="addr_search();">Buscar</button>
-                <div id="results"></div>
-            </form>
-        </div>
-    {% endblock %}
-    {% block js %}
-        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-        <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-        <script src="https://login.persona.org/include.js"></script>
-        <script type="text/javascript">
-            $(function () {
-                $('#persona').click(function (e) {
-                    e.preventDefault();
-                    var self = $(this);
+{% extends "foundation/base.html" %}
+{% load staticfiles %}
+{% block title %}Flisol{% endblock %}
 
-                    navigator.id.get(function (assertion) {
-                        if (assertion) {
-                            self.parent('form')
-                                    .find('input[type=hidden]')
-                                        .attr('value', assertion)
-                                        .end()
-                                    .submit();
-                        } else {
-                            alert('Some error occurred');
-                        }
-                    });
-                });
-            });
-        </script>
-        <script src="/static/js/map.js"></script>
-    {% endblock %}
-    </body>
-</html>
+{% block css %}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/site.css">
+    <link href="{% static "foundation/css/foundation-icons.css" %}" rel="stylesheet"/>
+{% endblock css %}
+
+{% block base_body %}
+<nav class="top-bar">
+  <!-- Title -->
+  <ul class="title-area">
+    <li class="name"><h1><a href="/">Flisol</a></h1></li>
+  </ul>
+
+  <!-- Top Bar Section -->
+
+    <section class="top-bar-section">
+
+    <!-- Top Bar Left Nav Elements -->
+    <ul class="left">
+
+      <!-- Search | has-form wrapper -->
+      <li class="has-form">
+        <div class="row collapse">
+          <div class="large-8 small-9 columns">
+            <input type="text" placeholder="¿Dónde es tu Flisol?">
+          </div>
+          <div class="large-4 small-3 columns">
+            <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();">Buscar</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Top Bar Right Nav Elements -->
+    {% block login %}
+    <ul class="right">
+      <!-- Button -->
+      <li>
+        {% if user.is_authenticated %}
+        <a href="" alt="{{ user.email }}"><i class="step fi-torso"></i></a>
+      </li>
+      <li><a href="{% url 'user:logout' %}"><i class="step fi-x-circle"></i></a>
+      </li>
+      <li>
+        {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i>{% endif %}</a>
+    {% else %}
+        <a href="{% url 'user:login' %}"><i class="step fi-at-sign">Ingresar</i></a>
+    {% endif %}
+      </li>
+    </ul>
+    {% endblock login %}
+  </section>
+  </nav><span></span>
+</nav>
+<div id="search">
+    <div id="results"></div>
+</div>
+{% block content %}
+<div class="text-center flisol-top">
+    <h1>Faltan N días</h1>
+    <div class="medium-12 large-4 columns">
+        <h1 class="text-center">X inscritos</h1>
+    </div>
+    <div class="medium-12 large-4 columns">
+        <h1 class="text-center">Y instancias</h1>
+    </div>
+    <div class="medium-12 large-4 columns">
+        <h1>Z voluntarios</h1>
+    </div>
+</div>
+
+<div id="map"></div>
+{% endblock content %}
+<div class="flisol-footer text-center">
+    <p>Hecho con mucho amor</p>
+    <p>2.014 -</p>
+    <p>Powered by Django, Foundation, Leaflet, OSM, Postgresql, Redis</p>
+</div>
+{% endblock %}
+
+{% block body_js %}
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script src="/static/js/map.js"></script>
+{% endblock %}
