@@ -9,8 +9,8 @@ Mapa de ruta
 
 - [X] Hacer la estructura de backend para soportar los modelos de datos persistentes
 necesarios
-- [ ] Usar autenticación con github, bitbucket, openstreetmap, facebook y googleplus.
-- [ ] Implementar los casos de uso para solicitar y registrar una instancia y un equipo
+- [ ] Usar autenticación con persona, github, bitbucket, openstreetmap, facebook y googleplus.
+- [ ] Implementar las historias de usuario para solicitar y registrar una instancia y un equipo
 - [ ] las notificaciones en tiempo real junto con la opción de
 autenticarse en el sitio para poder crear una sede.
 
@@ -20,8 +20,10 @@ Contribuir
 Siéntase libre de hacer fork de este proyecto para hacer fixes o solicitar PR
 para añadir características.
 
-Este sitio está hecho en Django, y son muy bien recibidos aportes de diseño y
-trucos CSS para llevarlo a escritorio y móvil.
+Este sitio está hecho en Django Y Foundation.
+
+Para correrlo en su entorno debe crear un archivo `local_settings`, cree su virtualenv y actualice las
+dependencias con pip.
 
 Licencia
 ========
