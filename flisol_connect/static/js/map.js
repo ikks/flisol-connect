@@ -9,9 +9,9 @@ function load_map() {
         osm = new L.TileLayer(osmUrl, {maxZoom: 13, attribution: osmAttribution});
 
     map.setView(new L.LatLng(-8 , -70), 3).addLayer(osm);
-    L.marker([2.939, -75.29455]).addTo(map).bindPopup('Neiva, 23 de Abril de 2.015');
-    L.marker([-22.9209, -43.25151]).addTo(map).bindPopup('Río de Janeiro, 24 de Abril de 2.015');
-    L.marker([20.37778, -76.6444]).addTo(map).bindPopup('Bayamo, 24 de Abril de 2.015');
+     L.marker([2.939, -75.29455]).addTo(map).bindPopup('Neiva, 23 de Abril de 2.015');
+     L.marker([-22.9209, -43.25151]).addTo(map).bindPopup('Río de Janeiro, 24 de Abril de 2.015');
+     L.marker([20.37778, -76.6444]).addTo(map).bindPopup('Bayamo, 24 de Abril de 2.015');
 }
 
 function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
@@ -36,9 +36,9 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
 }
 
 function addr_search() {
-    var inp = document.getElementById("addr");
+    var inp = $("#flisol-place");
 
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&-115,-56,-35,81&limit=5&q=' + inp.value, function(data) {
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&-115,-56,-35,81&limit=5&q=' + inp.val(), function(data) {
         var items = [];
 
         $.each(data, function(key, val) {
@@ -48,26 +48,19 @@ function addr_search() {
 
         $('#results').empty();
         if (items.length != 0) {
-            $('<a style="cursor:hand;" class="js-clear-search">X</a>').appendTo('#results');
-            $('<p>', { html: "Search results:" }).appendTo('#results');
+            $('<h1>', { html: "Algunos sitios que coinciden:" }).appendTo('#results');
             $('<ul/>', {
                 'class': 'my-new-list',
                 html: items.join('')
             }).appendTo('#results');
         } else {
-            $('<p>', { html: "No results found" }).appendTo('#results');
+            $('<p>', { html: "No encontramos nada" }).appendTo('#results');
         }
+        $('#search').foundation('reveal', 'open');
+        inp.val('');
     });
 }
 
 $(function() {
-    $('#search').on('click', '.js-clear-search', function(){
-        $('#results').empty();
-        $('#addr').val('');
-    });
-    $('#search').on('submit', 'form', function(){
-        addr_search();
-        return false;
-    });
+    load_map();
 });
-window.onload = load_map;

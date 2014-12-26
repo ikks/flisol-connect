@@ -24,12 +24,12 @@
 
       <!-- Search | has-form wrapper -->
       <li class="has-form">
-        <div class="row collapse">
+        <div class="row">
           <div class="large-8 small-9 columns">
-            <input type="text" placeholder="¿Dónde es tu Flisol?">
+            <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
           </div>
           <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();">Buscar</a>
+            <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();"><i class="step fi-magnifying-glass"></i></a>
           </div>
         </div>
       </li>
@@ -56,7 +56,8 @@
   </section>
   </nav><span></span>
 </nav>
-<div id="search">
+<div id="search" class="reveal-modal" data-reveal>
+    <a class="close-reveal-modal">&#215;</a>
     <div id="results"></div>
 </div>
 {% block content %}
