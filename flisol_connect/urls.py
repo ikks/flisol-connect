@@ -21,6 +21,13 @@ urlpatterns = patterns('',
     		namespace='rest_framework'
     	)
     ),
+
+    # API
+    url(
+        r'^api/',
+        include('localapi.urls', namespace='api')
+    ),
+
     url(
     	'',
     	include('social.apps.django_app.urls',

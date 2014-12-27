@@ -32,6 +32,7 @@ TEST_PROJECT_APPS = (
     'user',
     'common',
     'flisol_event',
+    'localapi',
 )
 
 
