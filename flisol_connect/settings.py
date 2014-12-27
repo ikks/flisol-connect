@@ -51,6 +51,7 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
     'foundation',
     'braces',
     'social.apps.django_app.default',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
