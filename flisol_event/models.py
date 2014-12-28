@@ -30,7 +30,6 @@ class FlisolEvent(models.Model):
     )
 
     official_date = models.DateField(
-        auto_now_add=True,
         verbose_name=_('official date'),
     )
 
@@ -221,8 +220,8 @@ class FlisolInstance(models.Model):
         )
 
     class Meta:
-        verbose_name = _('flisol city request')
-        verbose_name_plural = _('flisol city requests')
+        verbose_name = _('flisol instance')
+        verbose_name_plural = _('flisol instances')
         ordering = ('city_name', 'instance_name')
 
 
