@@ -1,0 +1,15 @@
+[
+{
+    "fields": {
+        "description": "",
+        "created_at": "2014-12-27T17:15:00.401Z",
+        "created_by": 1,
+        "official_date": "2014-12-27",
+        "logo": "2015.png",
+        "slug": "flisol-2015",
+        "name": "Flisol 2015"
+    },
+    "model": "flisol_event.flisolevent",
+    "pk": 1
+}
+]

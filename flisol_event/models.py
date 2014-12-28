@@ -132,11 +132,15 @@ class FlisolInstance(models.Model):
     address = models.CharField(
         max_length=255,
         verbose_name=_('address'),
+        default='',
+        blank=True,
     )
 
     schedule = models.CharField(
         max_length=255,
         verbose_name=_('schedule'),
+        default='',
+        blank=True,
     )
 
     map_center = models.CharField(
@@ -195,7 +199,7 @@ class FlisolInstance(models.Model):
 
     flisol_event = models.ForeignKey(
         'flisol_event.FlisolEvent',
-        verbose_name=_('created by'),
+        verbose_name=_('event'),
         related_name='instances',
     )
 
