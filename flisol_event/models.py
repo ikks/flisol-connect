@@ -246,7 +246,7 @@ class FlisolAttendance(models.Model):
     flisol_instance = models.ForeignKey(
         'flisol_event.FlisolInstance',
         verbose_name=_('country'),
-        related_name='instances_of_country',
+        related_name='attendants',
     )
 
     created_at = models.DateTimeField(
@@ -257,7 +257,7 @@ class FlisolAttendance(models.Model):
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         verbose_name=_('user'),
-        related_name='cities_to_create',
+        related_name='attendances',
     )
 
     can_update = models.BooleanField(
