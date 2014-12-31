@@ -23,7 +23,7 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
         map.removeLayer(feature);
     }
     if (osm_type == "node") {
-        feature = L.circle( loc1, 25, {color: 'green', fill: false}).addTo(map);
+        feature = L.circle( loc1, 50, {color: 'red', fill: false}).addTo(map);
         map.fitBounds(bounds);
         map.setZoom(18);
     } else {
@@ -38,7 +38,7 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
 function addr_search() {
     var inp = $("#flisol-place");
 
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&-115,-56,-35,81&limit=5&q=' + inp.val(), function(data) {
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&viewbox=-115,81,-35,-56bounded=1&limit=5&q=' + inp.val(), function(data) {
         var items = [];
 
         $.each(data, function(key, val) {
