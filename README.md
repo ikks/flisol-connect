@@ -25,6 +25,16 @@ Este sitio está hecho en Django Y Foundation.
 Para correrlo en su entorno debe crear un archivo `local_settings`, cree su virtualenv y actualice las
 dependencias con pip.
 
+Traducciones
+------------
+
+Hemos configurado Transifex para facilitar el proceso de
+traducción, nos interesa que esté tanto en español como
+portugués, estamos usando como idioma base el inglés.
+
+Para contribuir vía Transifex, por favor visite
+https://www.transifex.com/projects/p/flisol-connect/
+
 Licencia
 ========
 
