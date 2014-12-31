@@ -6,6 +6,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.core.validators import MinLengthValidator
 from django.utils import timezone
+from django.utils.translation import ugettext as _
 
 
 class UserManager(BaseUserManager):
@@ -69,7 +70,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     email = models.EmailField(
-        verbose_name=u'correo electrónico',
+        verbose_name=_('email'),
         unique=True,
         blank=False,
     )
@@ -88,7 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
                   u'Desmarque esta opción en lugar de borrar la cuenta.',
     )
     date_joined = models.DateTimeField(
-        verbose_name=u'Fecha de alta',
+        verbose_name=_('date joined'),
         default=timezone.now,
     )
 
@@ -100,7 +101,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     description = models.TextField(
         blank=True,
-        verbose_name=u'descripción del perfil',
+        verbose_name=_('profile description'),
     )
 
     objects = UserManager()
@@ -117,6 +118,6 @@ class User(AbstractBaseUser, PermissionsMixin):
         return u'{0}'.format(self.get_full_name())
 
     class Meta:
-        verbose_name = 'usuario'
-        verbose_name_plural = 'usuarios'
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
         ordering = ('email',)

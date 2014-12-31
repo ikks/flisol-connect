@@ -9,6 +9,7 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 # from app.utils import send_email
 
@@ -25,7 +26,7 @@ class CustomAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(CustomAuthenticationForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', u'Entrar'))
+        self.helper.add_input(Submit('submit', _('Login')))
 
 
 class CustomPasswordResetForm(PasswordResetForm):
@@ -33,7 +34,7 @@ class CustomPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super(CustomPasswordResetForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', u'Enviar'))
+        self.helper.add_input(Submit('submit', _('Send')))
 
     def save(self, domain_override=None,
              subject_template_name='registration/password_reset_subject.txt',
@@ -49,7 +50,7 @@ class CustomPasswordResetForm(PasswordResetForm):
         User = get_user_model()
         active_users = User.objects.filter(email__iexact=email, is_active=True)
         for user in active_users:
-            subject = u'Flisol - Restablecer la contraseña'
+            subject = _('Flisol - Restore your password')
             # send_email(
             #     subject,
             #     [user.email],
@@ -69,12 +70,12 @@ class CustomSetPasswordForm(SetPasswordForm):
     def __init__(self, *args, **kwargs):
         super(CustomSetPasswordForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', u'Cambiar mi contraseña'))
+        self.helper.add_input(Submit('submit', _('Change my password')))
 
 
 class UserRegistrationForm(forms.ModelForm):
     is_accepted = forms.BooleanField(
-        label=u'Acepto los términos para unirme al sitio',
+        label=_('I accept the terms to join'),
     )
     captcha = ReCaptchaField()
 
@@ -93,12 +94,12 @@ class UserRegistrationForm(forms.ModelForm):
             'first_name',
             'last_name',
             'email',
-            HTML(u'''No usaremos ni venderemos tus datos, solicitaremos
-                la mínima cantidad necesaria para garantizar tu privacidad.
-            '''),
+            HTML(_('''We will not sell or use in other way your data,
+                we ask the minimum amount to guarantee your privacy.
+            ''')),
             'is_accepted',
             'captcha',
             ButtonHolder(
-                Submit('submit', u'Suscribirse'),
+                Submit('submit', _('Join')),
             )
         )

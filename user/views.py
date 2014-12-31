@@ -5,6 +5,7 @@ from django.views.generic import CreateView
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse_lazy
 from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 from user.forms import UserRegistrationForm
 
@@ -27,6 +28,6 @@ class UserRegistrationView(CreateView):
     def form_valid(self, form):
         messages.success(
             self.request,
-            u'Bienvenid@ al Flisol',
+            _('Welcome to Flisol'),
         )
         return super(UserRegistrationView, self).form_valid(form)

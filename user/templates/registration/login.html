@@ -1,23 +1,23 @@
 {% extends "layout/base.html" %}
-{% load static crispy_forms_tags %}
+{% load static crispy_forms_tags i18n %}
 
-{% block title %}Iniciar sesión{% endblock %}
+{% block title %}{% trans 'login' %}{% endblock %}
 
-{% block bare_title %}BIENVENIDO, INGRESA A TU CUENTA{% endblock %}
+{% block bare_title %}{%trans 'WELCOME, LOG IN' %}{% endblock %}
 
 {% block content %}
 <div class="js-login-form" class="text-center">
-    <p class="text-center">INGRESA CON:</p>
+    <p class="text-center">{% trans 'LOGIN WITH' %}:</p>
 
     <form method="post" action="" class="login-form">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="hidden" name="next" value="{{ next }}">
-        <button class="btn align-center">INGRESAR</button>
+        <button class="btn align-center">{% trans 'login' %}</button>
     </form>
 </div>
 <div  class="text-center">
-    <p>O con tu red social</p>
+    <p>{% trans 'or with your social network' %}</p>
     <form method="post" action="/complete/persona/">
         <input type="hidden" name="assertion" value="" />
         <a rel="nofollow" id="persona" href="#"><i class="step fi-torso">Mozilla Persona</i></a>
