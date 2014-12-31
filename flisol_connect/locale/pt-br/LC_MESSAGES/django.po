@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-30 22:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: flisol_connect/settings.py:107
+msgid "Spanish"
+msgstr ""
+
+#: flisol_connect/settings.py:108
+msgid "Portuguese"
+msgstr ""
+
+#: flisol_connect/settings.py:109
+msgid "English"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:46
+msgid "update profile"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:48
+msgid "logout"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:53
+msgid "Login"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:67
+#, python-format
+msgid "%(days_to_go)s days for Flisol"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:69
+#, python-format
+msgid "%(subscriptions)s subscriptions"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:72
+#, python-format
+msgid "%(instances)s instances"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:75
+#, python-format
+msgid "%(volunteers)s volunteers"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:82
+msgid "Made with tons of love"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:84
+msgid "Powered by"
+msgstr ""

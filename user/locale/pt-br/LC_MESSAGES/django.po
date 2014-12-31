@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-30 22:03-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: user/forms.py:29
+msgid "Login"
+msgstr ""
+
+#: user/forms.py:37
+msgid "Send"
+msgstr ""
+
+#: user/forms.py:53
+msgid "Flisol - Restore your password"
+msgstr ""
+
+#: user/forms.py:73
+msgid "Change my password"
+msgstr ""
+
+#: user/forms.py:78
+msgid "I accept the terms to join"
+msgstr ""
+
+#: user/forms.py:97
+msgid ""
+"We will not sell or use in other way your data,\n"
+"                we ask the minimum amount to guarantee your privacy.\n"
+"            "
+msgstr ""
+
+#: user/forms.py:103
+msgid "Join"
+msgstr ""
+
+#: user/models.py:73
+msgid "email"
+msgstr ""
+
+#: user/models.py:92
+msgid "date joined"
+msgstr ""
+
+#: user/models.py:104
+msgid "profile description"
+msgstr ""
+
+#: user/models.py:121
+msgid "user"
+msgstr ""
+
+#: user/models.py:122
+msgid "users"
+msgstr ""
+
+#: user/templates/registration/login.html:4
+#: user/templates/registration/login.html:16
+msgid "login"
+msgstr ""
+
+#: user/templates/registration/login.html:6
+msgid "WELCOME, LOG IN"
+msgstr ""
+
+#: user/templates/registration/login.html:10
+msgid "LOGIN WITH"
+msgstr ""
+
+#: user/templates/registration/login.html:20
+msgid "or with your social network"
+msgstr ""
+
+#: user/views.py:31
+msgid "Welcome to Flisol"
+msgstr ""

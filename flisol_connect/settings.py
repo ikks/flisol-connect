@@ -57,6 +57,7 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -71,12 +72,12 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'social.apps.django_app.context_processors.backends',
+    'django.core.context_processors.i18n',
     'social.apps.django_app.context_processors.login_redirect',
 )
 
@@ -99,6 +100,13 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+  ('es', _('Spanish')),
+  ('pt-br', _('Portuguese')),
+  ('en', _('English')),
+)
 
 LANGUAGE_CODE = 'es-CO'
 
