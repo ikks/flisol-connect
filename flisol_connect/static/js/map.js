@@ -59,6 +59,7 @@ function addr_search() {
         $('#search').foundation('reveal', 'open');
         inp.val('');
     });
+    return false;
 }
 
 $(function() {
