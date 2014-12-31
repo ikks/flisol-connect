@@ -6,6 +6,7 @@ from django.utils.translation import ugettext as _
 from common.models import Country
 from common.models import Distribution
 
+
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
@@ -58,6 +59,7 @@ class CountryAdmin(admin.ModelAdmin):
         if 'delete_selected' in actions:
             del actions['delete_selected']
         return actions
+
 
 @admin.register(Distribution)
 class DistributionAdmin(admin.ModelAdmin):

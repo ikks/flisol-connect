@@ -2,7 +2,7 @@ var map;
 var feature;
 
 function load_map() {
-    map = new L.Map('map', {zoomControl: true});
+    map = new L.Map('map', {zoomControl: true, scrollWheelZoom: false});
 
     var osmUrl = 'https://{s}.tiles.mapbox.com/v3/examples.3hqcl3di/{z}/{x}/{y}.png',
         osmAttribution = 'Datos de <a href="http://openstreetmap.org/">OpenStreetMap</a>, tiles cortesía de mapbox.',

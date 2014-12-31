@@ -103,9 +103,9 @@ DATABASES = {
 from django.utils.translation import ugettext_lazy as _
 
 LANGUAGES = (
-  ('es', _('Spanish')),
-  ('pt-br', _('Portuguese')),
-  ('en', _('English')),
+    ('es', _('Spanish')),
+    ('pt-br', _('Portuguese')),
+    ('en', _('English')),
 )
 
 LANGUAGE_CODE = 'es-CO'
@@ -151,7 +151,8 @@ RECAPTCHA_PUBLIC_KEY = ''
 RECAPTCHA_PRIVATE_KEY = ''
 
 import sys
+# pylint: disable=W0401,E0611,W0614
 if 'test' in sys.argv:
-    from flisol_connect.test_settings import *  # pylint: disable=W0401,W0614
+    from flisol_connect.test_settings import *
 else:
-    from flisol_connect.local_settings import *  # pylint: disable=W0401,E0611,W0614
+    from flisol_connect.local_settings import *

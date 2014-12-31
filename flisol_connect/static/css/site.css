@@ -22,11 +22,16 @@ div#results {
     padding: 30px 0px;
 }
 
+.flisol-footer a {
+    color: #FFFFFF;
+    font-weight: 300;
+}
+
 .flisol-top {
     padding: 30px 0px;
 }
 
 .touch div#map {
     width: 90%;
-    margin-right: 10%;
+    margin-right: 5%;
 }

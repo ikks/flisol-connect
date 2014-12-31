@@ -9,7 +9,11 @@ from localapi import views
 
 from rest_framework.routers import SimpleRouter
 
+
 urlpatterns = patterns(
     'localapi.views',
-    url(r'^instancias/$', views.FlisolInstanceList.as_view()),
+    url(
+        r'^instancias/$',
+        views.FlisolInstanceList.as_view()
+    ),
 )
