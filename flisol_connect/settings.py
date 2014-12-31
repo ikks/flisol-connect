@@ -46,6 +46,7 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
     'django.contrib.staticfiles',
 
     'crispy_forms',
+    'crispy_forms_foundation',
     'debug_toolbar',
     'django_extensions',
     'captcha',
@@ -149,6 +150,8 @@ SOCIAL_AUTH_PIPELINE = (
 # django-recaptcha
 RECAPTCHA_PUBLIC_KEY = ''
 RECAPTCHA_PRIVATE_KEY = ''
+
+CRISPY_TEMPLATE_PACK = 'foundation-5'
 
 import sys
 # pylint: disable=W0401,E0611,W0614

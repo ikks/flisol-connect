@@ -1,0 +1,11 @@
+{% extends 'layout/base.html' %}
+{% load crispy_forms_tags i18n %}
+
+{% block title %}{% trans 'profile update' %}{% endblock %}
+
+{% block content %}
+<div class="userprofile-form">
+    <h1>{% trans 'Edit' %}</h1>
+    {% crispy form %}
+</div>
+{% endblock %}

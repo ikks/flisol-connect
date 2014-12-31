@@ -103,3 +103,28 @@ class UserRegistrationForm(forms.ModelForm):
                 Submit('submit', _('Join')),
             )
         )
+
+
+class UserUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'avatar',
+            'description',
+            'first_name',
+            'last_name',
+        )
+
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+            'avatar',
+            'first_name',
+            'last_name',
+            'description',
+            ButtonHolder(
+                Submit('submit', _('Update')),
+            )
+        )

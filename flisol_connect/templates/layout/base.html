@@ -43,7 +43,7 @@
       <!-- Button -->
       <li>
         {% if user.is_authenticated %}
-        <a href="" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
+        <a href="{% url 'user:profile_update' %}" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
       </li>
       <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i></a>
       </li>

@@ -15,6 +15,10 @@ div#results {
     max-width: 300px;
     margin: 0px auto;
 }
+.userprofile-form {
+    max-width: 500px;
+    margin: 0px auto;
+}
 
 .flisol-footer {
     background: #E25F1B;

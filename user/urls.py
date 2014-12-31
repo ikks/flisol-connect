@@ -9,6 +9,7 @@ from user.forms import CustomPasswordResetForm
 from user.forms import CustomSetPasswordForm
 from user.views import UserDetailView
 from user.views import UserRegistrationView
+from user.views import UserUpdateView
 
 
 urlpatterns = patterns(
@@ -70,6 +71,12 @@ urlpatterns = patterns(
         r'^suscribirse/$',
         UserRegistrationView.as_view(),
         name='registration',
+    ),
+
+    url(
+        r'^actualizar/$',
+        UserUpdateView.as_view(),
+        name='profile_update',
     ),
 
 )
