@@ -25,7 +25,7 @@
       <!-- Search | has-form wrapper -->
       <li class="has-form">
         <div class="row"><form onsubmit="addr_search();">
-          <div class="large-12 columns">
+          <div class="small-12 columns">
             <div class="row collapse">
               <div class="small-10 columns">
                 <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
@@ -66,7 +66,11 @@
 </div>
 {% block content %}
 <div class="text-center flisol-top">
+  {% if days_to_go > 0 %}
     <h1>{% blocktrans %}{{ days_to_go }} days for Flisol{% endblocktrans %}</h1>
+  {% elif days_to_go == 0 %}
+    <h1>{% blocktrans %}Today is Flisol, hang on{% endblocktrans %}</h1>
+  {% endif %}
     <div class="medium-12 large-4 columns">
         <h1 class="text-center">{% blocktrans %}{{ subscriptions }} subscriptions{% endblocktrans %}</h1>
     </div>
