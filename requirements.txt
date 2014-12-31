@@ -16,3 +16,4 @@ crispy-forms-foundation==0.4
 django-zurb-foundation==5.4.7.1
 djangorestframework==3.0.2
 django-filter==0.9.1
+django-dynamic-fixture==1.8.1
