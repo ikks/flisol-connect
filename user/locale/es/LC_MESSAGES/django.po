@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-30 22:03-0500\n"
+"POT-Creation-Date: 2014-12-31 11:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,10 @@ msgstr ""
 msgid "Join"
 msgstr ""
 
+#: user/forms.py:128
+msgid "Update"
+msgstr ""
+
 #: user/models.py:73
 msgid "email"
 msgstr ""
@@ -86,6 +90,18 @@ msgstr ""
 msgid "or with your social network"
 msgstr ""
 
-#: user/views.py:31
+#: user/templates/user/user_update.html:4
+msgid "profile update"
+msgstr ""
+
+#: user/templates/user/user_update.html:8
+msgid "Edit"
+msgstr ""
+
+#: user/views.py:33
 msgid "Welcome to Flisol"
+msgstr ""
+
+#: user/views.py:50
+msgid "Your changes have been applied"
 msgstr ""

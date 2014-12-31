@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-30 22:03-0500\n"
+"POT-Creation-Date: 2014-12-31 11:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,42 +30,46 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:46
+#: flisol_connect/templates/layout/base.html:48
 msgid "update profile"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:48
+#: flisol_connect/templates/layout/base.html:50
 msgid "logout"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:53
+#: flisol_connect/templates/layout/base.html:55
 msgid "Login"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:67
+#: flisol_connect/templates/layout/base.html:70
 #, python-format
 msgid "%(days_to_go)s days for Flisol"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:69
-#, python-format
-msgid "%(subscriptions)s subscriptions"
-msgstr ""
-
 #: flisol_connect/templates/layout/base.html:72
-#, python-format
-msgid "%(instances)s instances"
+msgid "Today is Flisol, hang on"
 msgstr ""
 
 #: flisol_connect/templates/layout/base.html:75
 #, python-format
+msgid "%(subscriptions)s subscriptions"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:78
+#, python-format
+msgid "%(instances)s instances"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:81
+#, python-format
 msgid "%(volunteers)s volunteers"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:82
+#: flisol_connect/templates/layout/base.html:88
 msgid "Made with tons of love"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:84
+#: flisol_connect/templates/layout/base.html:90
 msgid "Powered by"
 msgstr ""
