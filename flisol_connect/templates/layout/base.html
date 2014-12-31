@@ -1,5 +1,5 @@
 {% extends "foundation/base.html" %}
-{% load staticfiles %}
+{% load staticfiles i18n %}
 {% block title %}Flisol{% endblock %}
 
 {% block css %}
@@ -25,11 +25,13 @@
       <!-- Search | has-form wrapper -->
       <li class="has-form">
         <div class="row">
-          <div class="large-8 small-9 columns">
-            <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
-          </div>
-          <div class="large-4 small-3 columns">
-            <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();"><i class="step fi-magnifying-glass"></i></a>
+          <div class="large-8 small-8 columns">
+            <form>
+              <ul>
+                <li<input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
+                <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();"><i class="step fi-magnifying-glass"></i></a>
+              </ul>
+            </form>
           </div>
         </div>
       </li>
@@ -41,14 +43,14 @@
       <!-- Button -->
       <li>
         {% if user.is_authenticated %}
-        <a href="" alt="{{ user.email }}"><i class="step fi-torso"></i></a>
+        <a href="" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
       </li>
-      <li><a href="{% url 'user:logout' %}"><i class="step fi-x-circle"></i></a>
+      <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i></a>
       </li>
       <li>
         {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i>{% endif %}</a>
     {% else %}
-        <a href="{% url 'user:login' %}"><i class="step fi-at-sign">Ingresar</i></a>
+        <a href="{% url 'user:login' %}"><i class="step fi-at-sign">{% trans 'Login' %}</i></a>
     {% endif %}
       </li>
     </ul>
@@ -62,24 +64,30 @@
 </div>
 {% block content %}
 <div class="text-center flisol-top">
-    <h1>Faltan N días</h1>
+    <h1>{% blocktrans %}{{ days_to_go }} days for Flisol{% endblocktrans %}</h1>
     <div class="medium-12 large-4 columns">
-        <h1 class="text-center">X inscritos</h1>
+        <h1 class="text-center">{% blocktrans %}{{ subscriptions }} subscriptions{% endblocktrans %}</h1>
     </div>
     <div class="medium-12 large-4 columns">
-        <h1 class="text-center">Y instancias</h1>
+        <h1 class="text-center">{% blocktrans %}{{ instances }} instances{% endblocktrans %}</h1>
     </div>
     <div class="medium-12 large-4 columns">
-        <h1>Z voluntarios</h1>
+        <h1>{% blocktrans %}{{ volunteers }} volunteers{% endblocktrans %}</h1>
     </div>
 </div>
 
 <div id="map"></div>
 {% endblock content %}
 <div class="flisol-footer text-center">
-    <p>Hecho con mucho amor</p>
+    <p>{% trans 'Made with tons of love' %}</p>
     <p>2.014 -</p>
-    <p>Powered by Django, Foundation, Leaflet, OSM, Postgresql, Redis</p>
+    <p>{% trans 'Powered by' %}
+      <a href="http://djangoproject.com">Django</a>,
+      <a href="http://foundation.zurb.com">Foundation</a>,
+      <a href="http://leafletjs.com">Leaflet</a>,
+      <a href="http://osm.org">OSM</a>,
+      <a href="http://postgresql.org">Postgresql</a>,
+      <a href="http://redis.io">Redis</a>.</p>
 </div>
 {% endblock %}
 

@@ -9,13 +9,7 @@ from localapi import views
 
 from rest_framework.routers import SimpleRouter
 
-
-# Create a router and register our viewsets with it.
-# router = SimpleRouter()
-# router.register(r'flisol', views.FlisolInstanceSet)
-
 urlpatterns = patterns(
     'localapi.views',
     url(r'^instancias/$', views.FlisolInstanceList.as_view()),
-    # url(r'^', include(router.urls)),
 )
