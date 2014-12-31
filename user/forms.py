@@ -125,6 +125,6 @@ class UserUpdateForm(forms.ModelForm):
             'last_name',
             'description',
             ButtonHolder(
-                Submit('submit', _('Update')),
+                Submit('submit', _('Update'), css_class="button"),
             )
         )
