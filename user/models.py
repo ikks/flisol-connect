@@ -1,12 +1,20 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
+import urllib
+import hashlib
+import urllib2
+import time
+
 from django.db import models
+from django.dispatch import receiver
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
 from django.core.validators import MinLengthValidator
+from django.db.models.signals import post_save
 from django.utils import timezone
 from django.utils.translation import ugettext as _
+from django.core.files.base import ContentFile
 
 
 class UserManager(BaseUserManager):
@@ -121,3 +129,22 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _('user')
         verbose_name_plural = _('users')
         ordering = ('email',)
+
+
+@receiver(post_save, sender=User)
+def put_gravatar(sender, created, instance, **kwargs):
+    if not created:
+        return
+
+    email = instance.email
+    default = "http://www.stevensegallery.com/40/40"
+    size = 40
+
+    print "saved thing"
+    # construct the url
+    gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
+    gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
+    instance.avatar.save(
+        u'{0}.jpg'.format(int(time.time())),
+        ContentFile(urllib2.urlopen(gravatar_url).read()),
+    )
