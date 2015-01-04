@@ -140,8 +140,6 @@ def put_gravatar(sender, created, instance, **kwargs):
     default = "http://www.stevensegallery.com/40/40"
     size = 40
 
-    print "saved thing"
-    # construct the url
     gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
     gravatar_url += urllib.urlencode({'d':default, 's':str(size)})
     instance.avatar.save(
