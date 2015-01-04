@@ -1,5 +1,5 @@
 # Libraries
-Django==1.7.1
+Django==1.7.2
 psycopg2==2.5.4
 Pillow==2.6.1
 Markdown==2.5.2
