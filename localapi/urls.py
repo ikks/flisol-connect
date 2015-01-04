@@ -16,4 +16,8 @@ urlpatterns = patterns(
         r'^instancias/$',
         views.FlisolInstanceList.as_view()
     ),
+    url(
+        r'^solicitudes/$',
+        views.FlisolInstanceRequestList.as_view()
+    ),
 )

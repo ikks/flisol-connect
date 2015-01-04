@@ -4,6 +4,7 @@
 from django.contrib.auth import get_user_model
 
 from flisol_event.models import FlisolInstance
+from flisol_event.models import FlisolInstanceRequest
 
 from rest_framework import serializers
 from rest_framework.reverse import reverse
@@ -24,4 +25,14 @@ class FlisolInstanceSerializer(serializers.HyperlinkedModelSerializer):
             'status',
             'wiki_url',
             'instance_date',
+        )
+
+
+class FlisolInstanceRequestSerializer(serializers.HyperlinkedModelSerializer):
+
+    class Meta:
+        model = FlisolInstanceRequest
+        fields = (
+            'city_name',
+            'description',
         )
