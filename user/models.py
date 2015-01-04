@@ -6,6 +6,7 @@ import urllib2
 import time
 
 from django.db import models
+from django.core.cache import cache
 from django.dispatch import receiver
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
@@ -145,4 +146,10 @@ def put_gravatar(sender, created, instance, **kwargs):
     instance.avatar.save(
         u'{0}.jpg'.format(int(time.time())),
         ContentFile(urllib2.urlopen(gravatar_url).read()),
+    )
+    cache.set(
+        'subscriptions',
+        sender.objects.filter(
+            is_active=True
+        ).count()
     )
