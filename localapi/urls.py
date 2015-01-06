@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-# Author: AxiaCore S.A.S. http://axiacore.com
 from django.conf.urls import patterns
 from django.conf.urls import url
 from django.conf.urls import include

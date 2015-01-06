@@ -1,6 +1,5 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-# Author: AxiaCore S.A.S. http://axiacore.com
 from django.contrib.auth import get_user_model
 
 from flisol_event.models import FlisolInstance
