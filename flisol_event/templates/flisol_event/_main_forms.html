@@ -3,6 +3,7 @@
 <div id="instance-creation" class="reveal-modal" data-reveal>
     <a class="close-reveal-modal">&#215;</a>
     <div>
+        <h2>{% trans 'A leader is here, a new instance' %}</h2>
         <p>{% blocktrans %}Welcome you brave, we are really happy that you are ready to start organizing your Flisol instance, please fill the fields so people can start to subscribe!!!"{% endblocktrans %}</p>
         <p>{% trans "You are our hero!!!" %}</p>
         <form method="post" action="{% url 'api:instance' %}" class="creation-form">
@@ -15,6 +16,7 @@
 <div id="instance-request" class="reveal-modal" data-reveal>
     <a class="close-reveal-modal">&#215;</a>
     <div>
+        <h2>{% trans "Let's make it happen" %}</h2>
         <p>{% blocktrans %}You have looked for it, but there is no instance close to your place and you want to know wether it will be or not.  Please let us know so we can get track and let you know about the best opportunities available.{% endblocktrans %}</p>
         <form method="post" action="{% url 'api:request' %}" class="request-form">
             {{ request_form|crispy }}
@@ -26,7 +28,8 @@
 <div id="instance-subscription" class="reveal-modal" data-reveal>
     <a class="close-reveal-modal">&#215;</a>
     <div>
-        <p>{% blocktrans %}You are more than welcome to join in.{% endblocktrans %}</p>
+        <h2>Join in to <span class="instance-name">XXXXXX</span></h2>
+        <p>{% blocktrans %}You are more than welcome :){% endblocktrans %}</p>
         <form method="post" action="{% url 'api:request' %}" class="subscription-form" data-visitor-id="{{ visitor_id }}">
             {{ subscription_form|crispy }}
             {{ machine_form|crispy }}

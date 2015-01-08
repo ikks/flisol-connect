@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Igor Támara <igor@tamarapatino.org>, 2015.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: flisol-connect 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-07 20:21-0500\n"
+"POT-Creation-Date: 2015-01-07 21:47-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,14 +22,6 @@ msgstr ""
 msgid "additional"
 msgstr ""
 
-#: flisol_event/forms.py:30
-msgid "Request"
-msgstr ""
-
-#: flisol_event/forms.py:66
-msgid "Create"
-msgstr ""
-
 #: flisol_event/models.py:15 flisol_event/models.py:60
 #: flisol_event/models.py:114 flisol_event/models.py:119
 msgid "name"
@@ -40,7 +32,7 @@ msgid "image"
 msgstr ""
 
 #: flisol_event/models.py:29 flisol_event/models.py:64
-#: flisol_event/models.py:127 flisol_event/models.py:328
+#: flisol_event/models.py:127 flisol_event/models.py:340
 msgid "description"
 msgstr ""
 
@@ -50,7 +42,7 @@ msgstr ""
 
 #: flisol_event/models.py:38 flisol_event/models.py:70
 #: flisol_event/models.py:190 flisol_event/models.py:254
-#: flisol_event/models.py:334
+#: flisol_event/models.py:351
 msgid "created at"
 msgstr ""
 
@@ -147,7 +139,7 @@ msgstr ""
 msgid "event"
 msgstr ""
 
-#: flisol_event/models.py:207 flisol_event/models.py:248
+#: flisol_event/models.py:207
 msgid "country"
 msgstr ""
 
@@ -179,72 +171,112 @@ msgstr ""
 msgid "role"
 msgstr ""
 
+#: flisol_event/models.py:248 flisol_event/models.py:297
+msgid "instance"
+msgstr ""
+
 #: flisol_event/models.py:259
 msgid "user"
 msgstr ""
 
-#: flisol_event/models.py:272
+#: flisol_event/models.py:269
+msgid "comment"
+msgstr ""
+
+#: flisol_event/models.py:270
+msgid "let us know how you can help best"
+msgstr ""
+
+#: flisol_event/models.py:278
 msgid "instance flisol person"
 msgstr ""
 
-#: flisol_event/models.py:273
+#: flisol_event/models.py:279
 msgid "instance flisol people"
 msgstr ""
 
-#: flisol_event/models.py:283
+#: flisol_event/models.py:289
 msgid "desktop"
 msgstr ""
 
-#: flisol_event/models.py:284
+#: flisol_event/models.py:290
 msgid "laptop"
 msgstr ""
 
-#: flisol_event/models.py:285
+#: flisol_event/models.py:291
 msgid "tablet"
 msgstr ""
 
-#: flisol_event/models.py:286
+#: flisol_event/models.py:292
 msgid "phone"
 msgstr ""
 
-#: flisol_event/models.py:297
+#: flisol_event/models.py:309
 msgid "machine_type"
 msgstr ""
 
-#: flisol_event/models.py:302
+#: flisol_event/models.py:314
 msgid "registar"
 msgstr ""
 
-#: flisol_event/models.py:308
+#: flisol_event/models.py:320
 msgid "installed_by"
 msgstr ""
 
-#: flisol_event/models.py:315
+#: flisol_event/models.py:327
 msgid "requested distro"
 msgstr ""
 
-#: flisol_event/models.py:322
+#: flisol_event/models.py:334
 msgid "installed distro"
 msgstr ""
 
-#: flisol_event/models.py:339
+#: flisol_event/models.py:345
+msgid "comment post installation"
+msgstr ""
+
+#: flisol_event/models.py:356
 msgid "installed at"
 msgstr ""
 
 #: flisol_event/templates/flisol_event/_main_forms.html:6
+msgid "A leader is here, a new instance"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:7
 msgid ""
 "Welcome you brave, we are really happy that you are ready to start "
 "organizing your Flisol instance, please fill the fields so people can start "
 "to subscribe!!!\""
 msgstr ""
 
-#: flisol_event/templates/flisol_event/_main_forms.html:7
+#: flisol_event/templates/flisol_event/_main_forms.html:8
 msgid "You are our hero!!!"
 msgstr ""
 
-#: flisol_event/templates/flisol_event/_main_forms.html:15
+#: flisol_event/templates/flisol_event/_main_forms.html:11
+msgid "create"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:19
+msgid "Let's make it happen"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:20
 msgid ""
 "You have looked for it, but there is no instance close to your place and you "
 "want to know wether it will be or not.  Please let us know so we can get "
 "track and let you know about the best opportunities available."
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:23
+msgid "request"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:32
+msgid "You are more than welcome :)"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:36
+msgid "subscribe"
 msgstr ""
