@@ -5,7 +5,10 @@
     <div>
         <p>{% blocktrans %}Welcome you brave, we are really happy that you are ready to start organizing your Flisol instance, please fill the fields so people can start to subscribe!!!"{% endblocktrans %}</p>
         <p>{% trans "You are our hero!!!" %}</p>
-        {{ creation_form|crispy }}
+        <form method="post" action="{% url 'api:instance' %}" class="login-form">
+            {{ creation_form|crispy }}
+            <button class="button align-center">{% trans 'create' %}</button>
+        </form>
     </div>
 </div>
 
@@ -13,7 +16,10 @@
     <a class="close-reveal-modal">&#215;</a>
     <div>
         <p>{% blocktrans %}You have looked for it, but there is no instance close to your place and you want to know wether it will be or not.  Please let us know so we can get track and let you know about the best opportunities available.{% endblocktrans %}</p>
-        {{ request_form|crispy }}
+        <form method="post" action="{% url 'api:request' %}" class="login-form">
+            {{ request_form|crispy }}
+            <button class="button align-center">{% trans 'request' %}</button>
+        </form>
     </div>
 </div>
 
