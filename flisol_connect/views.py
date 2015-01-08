@@ -24,7 +24,7 @@ class HomePageView(TemplateView):
                 latest_event.official_date -
                 date.today()
             ).days
-            cache.set('days_to_go', days_to_go)
+            cache.set('days_to_go', days_to_go, 300)
             cache.set('current_event_id', latest_event.id)
         if days_to_go >= 0:
             context['days_to_go'] = days_to_go
