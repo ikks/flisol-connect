@@ -1,5 +1,5 @@
 {% extends "foundation/base.html" %}
-{% load staticfiles i18n %}
+{% load staticfiles i18n flisol_event_tags %}
 {% block title %}Flisol{% endblock %}
 
 {% block css %}
@@ -24,14 +24,14 @@
 
       <!-- Search | has-form wrapper -->
       <li class="has-form">
-        <div class="row"><form onsubmit="addr_search();">
+        <div class="row"><form class="searchplace">
           <div class="small-12 columns">
             <div class="row collapse">
               <div class="small-10 columns">
                 <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
               </div>
               <div class="small-2 columns">
-                <a href="#" class="alert button expand" id="addr" name="addr" onclick="addr_search();"><i class="step fi-magnifying-glass"></i></a>
+                <a href="#" class="alert button expand" id="addr" name="addr"><i class="step fi-magnifying-glass"></i></a>
               </div>
             </div>
           </div>
@@ -60,10 +60,11 @@
   </section>
   <span></span>
 </nav>
-<div id="search" class="reveal-modal" data-reveal>
+<div id="search" class="reveal-modal" data-reveal data-flisol-search-url="{% url 'api:instance' %}">
     <a class="close-reveal-modal">&#215;</a>
     <div id="results"></div>
 </div>
+{% basic_forms %}
 {% block content %}
 <div class="text-center flisol-top">
   {% if days_to_go > 0 %}

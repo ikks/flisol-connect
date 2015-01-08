@@ -43,7 +43,7 @@ function addr_search() {
 
         $.each(data, function(key, val) {
             bb = val.boundingbox;
-            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a></li>');
+            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar"><i class="step fi-shopping-cart"></i></a><a href="#" class="js-create-instance" alt="Crear" title="Crear"><i class="step fi-star"></i></a></li>');
         });
 
         $('#results').empty();
@@ -62,6 +62,25 @@ function addr_search() {
     return false;
 }
 
+function look_for_flisol() {
+    $.get($('#search').data('flisol-search-url') + '?q=' + $("#flisol-place").val(),
+        function(result){
+            if (result.length === 0) {
+                console.log('No hay instancias');
+            }
+            addr_search();
+        }
+    )
+}
+
 $(function() {
     load_map();
+    $('.searchplace').on('submit',look_for_flisol);
+    $('#addr').on('click',look_for_flisol);
+    $('#results').on('click', '.js-request-instance', function(){
+        $('#instance-request').foundation('reveal', 'open');
+    });
+    $('#results').on('click', '.js-create-instance', function(){
+        $('#instance-creation').foundation('reveal', 'open');
+    });
 });

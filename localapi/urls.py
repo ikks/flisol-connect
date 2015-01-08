@@ -13,10 +13,12 @@ urlpatterns = patterns(
     'localapi.views',
     url(
         r'^instancias/$',
-        views.FlisolInstanceList.as_view()
+        views.FlisolInstanceList.as_view(),
+        name='instance',
     ),
     url(
         r'^solicitudes/$',
-        views.FlisolInstanceRequestList.as_view()
+        views.FlisolInstanceRequestList.as_view(),
+        name='request',
     ),
 )

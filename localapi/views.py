@@ -16,7 +16,13 @@ class FlisolInstanceList(generics.ListAPIView):
     serializer_class = FlisolInstanceSerializer
     filter_backends = (filters.SearchFilter,)
     search_fields = ('city_name', 'instance_name', 'slug')
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
+    def perform_create(self, serializer):
+        serializer.save(
+            created_by=self.request.user,
+            flisol_event=cache.get('current_event_id'),
+        )
 
 class FlisolInstanceRequestList(generics.ListAPIView):
     queryset = FlisolInstanceRequest.objects.all()
