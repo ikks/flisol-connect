@@ -17,7 +17,7 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
         latest_event = cache.get('current_event_id')
-        days_to_go = cache.get('days_to_go', 300)
+        days_to_go = cache.get('days_to_go')
         if not days_to_go:
             latest_event = FlisolEvent.objects.latest('id')
             days_to_go = (
