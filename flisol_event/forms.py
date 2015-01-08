@@ -4,12 +4,12 @@ from django import forms
 from crispy_forms_foundation.forms import FoundationModelForm
 
 from flisol_event.models import FlisolInstance
+from flisol_event.models import FlisolAttendance
+from flisol_event.models import FlisolMachine
 from flisol_event.models import FlisolInstanceRequest
 
 from crispy_forms.helper import FormHelper
 from crispy_forms_foundation.layout import Layout
-from crispy_forms_foundation.layout import Submit
-from crispy_forms_foundation.layout import ButtonHolder
 
 
 class FlisolInstanceRequestForm(FoundationModelForm):
@@ -26,9 +26,6 @@ class FlisolInstanceRequestForm(FoundationModelForm):
         self.helper.layout = Layout(
             'city_name',
             'description',
-            ButtonHolder(
-                Submit('submit', _('Request'), css_class="button"),
-            ),
         )
         super(FlisolInstanceRequestForm, self).__init__(*args, **kwargs)
 
@@ -62,9 +59,36 @@ class FlisolInstanceForm(FoundationModelForm):
             'instance_name',
             'address',
             'description',
-            ButtonHolder(
-                Submit('submit', _('Create'), css_class="button"),
-            ),
         )
         super(FlisolInstanceRequestForm, self).__init__(*args, **kwargs)
 
+
+
+class FlisolAttendanceForm(FoundationModelForm):
+
+    class Meta:
+        model = FlisolAttendance
+        fields = (
+            'role',
+            'comment',
+            'flisol_instance',
+        )
+        widgets = {
+            'flisol_instance': forms.HiddenInput,
+        }
+
+
+class FlisolMachineForm(FoundationModelForm):
+
+    class Meta:
+        model = FlisolMachine
+        fields = (
+            'machine_type',
+            'requested_distro',
+            'description',
+            'flisol_instance'
+        )
+
+        widgets = {
+            'flisol_instance': forms.HiddenInput,
+        }

@@ -245,7 +245,7 @@ class FlisolAttendance(models.Model):
 
     flisol_instance = models.ForeignKey(
         'flisol_event.FlisolInstance',
-        verbose_name=_('country'),
+        verbose_name=_('instance'),
         related_name='attendants',
     )
 
@@ -263,6 +263,12 @@ class FlisolAttendance(models.Model):
     can_update = models.BooleanField(
         verbose_name=('can update instance info'),
         default=False,
+    )
+
+    comment = models.TextField(
+        verbose_name=_('comment'),
+        help_text=_('let us know how you can help best'),
+        blank=True,
     )
 
     def __unicode__(self):
@@ -284,6 +290,12 @@ class FlisolMachine(models.Model):
         (MACHINE_TYPE_CHOICES_LAPTOP, _('laptop')),
         (MACHINE_TYPE_CHOICES_TABLET, _('tablet')),
         (MACHINE_TYPE_CHOICES_CELL_PHONE, _('phone')),
+    )
+
+    flisol_instance = models.ForeignKey(
+        'flisol_event.FlisolInstance',
+        verbose_name=_('instance'),
+        related_name='machines',
     )
 
     is_installed = models.BooleanField(
@@ -326,6 +338,11 @@ class FlisolMachine(models.Model):
 
     description = models.TextField(
         verbose_name=_('description'),
+        blank=True,
+    )
+
+    comment = models.TextField(
+        verbose_name=_('comment post installation'),
         blank=True,
     )
 

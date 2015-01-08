@@ -5,7 +5,7 @@
     <div>
         <p>{% blocktrans %}Welcome you brave, we are really happy that you are ready to start organizing your Flisol instance, please fill the fields so people can start to subscribe!!!"{% endblocktrans %}</p>
         <p>{% trans "You are our hero!!!" %}</p>
-        <form method="post" action="{% url 'api:instance' %}" class="login-form">
+        <form method="post" action="{% url 'api:instance' %}" class="creation-form">
             {{ creation_form|crispy }}
             <button class="button align-center">{% trans 'create' %}</button>
         </form>
@@ -16,7 +16,7 @@
     <a class="close-reveal-modal">&#215;</a>
     <div>
         <p>{% blocktrans %}You have looked for it, but there is no instance close to your place and you want to know wether it will be or not.  Please let us know so we can get track and let you know about the best opportunities available.{% endblocktrans %}</p>
-        <form method="post" action="{% url 'api:request' %}" class="login-form">
+        <form method="post" action="{% url 'api:request' %}" class="request-form">
             {{ request_form|crispy }}
             <button class="button align-center">{% trans 'request' %}</button>
         </form>
@@ -26,6 +26,11 @@
 <div id="instance-subscription" class="reveal-modal" data-reveal>
     <a class="close-reveal-modal">&#215;</a>
     <div>
-        {{ subscription_form }}
+        <p>{% blocktrans %}You are more than welcome to join in.{% endblocktrans %}</p>
+        <form method="post" action="{% url 'api:request' %}" class="subscription-form" data-visitor-id="{{ visitor_id }}">
+            {{ subscription_form|crispy }}
+            {{ machine_form|crispy }}
+            <button class="button align-center">{% trans 'subscribe' %}</button>
+        </form>
     </div>
 </div>

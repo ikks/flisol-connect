@@ -39,7 +39,7 @@ function addr_search() {
     var inp = $("#flisol-place");
 
     $.getJSON('http://nominatim.openstreetmap.org/search?format=json&viewbox=-115,81,-35,-56bounded=1&limit=5&q=' + inp.val(), function(data) {
-        var items = [];
+        var items = ['<li><a href="#" class="js-subscribe"><i class="step fi-ticket"></i></a>'];
 
         $.each(data, function(key, val) {
             bb = val.boundingbox;
@@ -66,7 +66,6 @@ function look_for_flisol() {
     $.get($('#search').data('flisol-search-url') + '?q=' + $("#flisol-place").val(),
         function(result){
             if (result.length === 0) {
-                console.log('No hay instancias');
             }
             addr_search();
         }
@@ -83,4 +82,18 @@ $(function() {
     $('#results').on('click', '.js-create-instance', function(){
         $('#instance-creation').foundation('reveal', 'open');
     });
+    $('#results').on('click', '.js-subscribe', function(){
+        $('#div_id_comment').hide();
+        $('#instance-subscription').foundation('reveal', 'open');
+    });
+    $('#id_role').on('change', function(){
+        if ($('#id_role').val() === $('.subscription-form').data('visitor-id').toString()) {
+            $('#div_id_machine_type,#div_id_requested_distro,#div_id_description').show();
+            $('#div_id_comment').hide();
+        }
+        else {
+            $('#div_id_machine_type,#div_id_requested_distro,#div_id_description').hide();
+            $('#div_id_comment').show();
+        }
+    })
 });
