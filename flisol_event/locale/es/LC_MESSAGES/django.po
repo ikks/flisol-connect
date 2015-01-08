@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-31 11:40-0500\n"
+"POT-Creation-Date: 2015-01-07 20:21-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,6 +20,14 @@ msgstr ""
 
 #: flisol_event/admin.py:100
 msgid "additional"
+msgstr ""
+
+#: flisol_event/forms.py:30
+msgid "Request"
+msgstr ""
+
+#: flisol_event/forms.py:66
+msgid "Create"
 msgstr ""
 
 #: flisol_event/models.py:15 flisol_event/models.py:60
@@ -221,4 +229,22 @@ msgstr ""
 
 #: flisol_event/models.py:339
 msgid "installed at"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:6
+msgid ""
+"Welcome you brave, we are really happy that you are ready to start "
+"organizing your Flisol instance, please fill the fields so people can start "
+"to subscribe!!!\""
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:7
+msgid "You are our hero!!!"
+msgstr ""
+
+#: flisol_event/templates/flisol_event/_main_forms.html:15
+msgid ""
+"You have looked for it, but there is no instance close to your place and you "
+"want to know wether it will be or not.  Please let us know so we can get "
+"track and let you know about the best opportunities available."
 msgstr ""
