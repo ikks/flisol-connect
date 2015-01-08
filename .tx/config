@@ -1,0 +1,27 @@
+[main]
+host = https://www.transifex.com
+
+[flisol-connect.common]
+source_file = common/locale/en/LC_MESSAGES/django.po
+file_filter = translations/flisol-connect.common/<lang>.po
+source_lang = en
+type = PO
+
+[flisol-connect.flisol_connect]
+source_file = flisol_connect/locale/en/LC_MESSAGES/django.po
+file_filter = translations/flisol-connect.flisol_connect/<lang>.po
+source_lang = en
+type = PO
+
+[flisol-connect.flisol_eventpo]
+source_file = flisol_event/locale/en/LC_MESSAGES/django.po
+file_filter = translations/flisol-connect.flisol_eventpo/<lang>.po
+source_lang = en
+type = PO
+
+[flisol-connect.user]
+source_file = user/locale/en/LC_MESSAGES/django.po
+file_filter = translations/flisol-connect.user/<lang>.po
+source_lang = en
+type = PO
+
