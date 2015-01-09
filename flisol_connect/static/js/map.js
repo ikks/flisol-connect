@@ -38,12 +38,16 @@ function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
 function addr_search() {
     var inp = $("#flisol-place");
 
-    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&viewbox=-115,81,-35,-56bounded=1&limit=5&q=' + inp.val(), function(data) {
+    $.getJSON('http://nominatim.openstreetmap.org/search?format=json&viewbox=-115,81,-35,-56&addressdetails=1&bounded=1&limit=5&q=' + inp.val(), function(data) {
         var items = ['<li><a href="#" class="js-subscribe"><i class="step fi-ticket"></i></a>'];
 
         $.each(data, function(key, val) {
+            name = val.display_name.split(',')[0];
+            country = val.address.country_code;
+            lon = val.lon;
+            lat = val.lat;
             bb = val.boundingbox;
-            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3]  + ", \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar"><i class="step fi-shopping-cart"></i></a><a href="#" class="js-create-instance" alt="Crear" title="Crear"><i class="step fi-star"></i></a></li>');
+            items.push('<li data-name="' + name + '" data-country-code="' + country + '" data-lon="' + lon + '" data-lat="' + lat + '"><a href="#" class="js-zoomto" data-l1="' + bb[0] + '" data-l2="' + bb[2] + '" data-l3="' + bb[1] + '" data-l4="' + bb[3]  + '" data-type-node="' + val.osm_type + '">' + val.display_name + '</a><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar"><i class="step fi-shopping-cart"></i></a><a href="#" class="js-create-instance" alt="Crear" title="Crear"><i class="step fi-star"></i></a></li>');
         });
 
         $('#results').empty();
@@ -85,6 +89,10 @@ $(function() {
     $('#results').on('click', '.js-subscribe', function(){
         $('#div_id_comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
+    });
+    $('#results').on('click', '.js-zoomto', function(){
+        var item = $(this);
+        chooseAddr(item.data('l1'), item.data('l2'), item.data('l3'), item.data('l4'), item.data('type-node'))
     });
     $('#id_role').on('change', function(){
         if ($('#id_role').val() === $('.subscription-form').data('visitor-id').toString()) {
