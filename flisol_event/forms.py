@@ -23,6 +23,11 @@ class FlisolInstanceRequestForm(FoundationModelForm):
             'description',
         )
 
+        widgets = {
+            'map_center': forms.HiddenInput,
+            'country': forms.HiddenInput,
+        }
+
     def _init_(self, *args, **kwargs):
         self.helper = FormHelper()
         self.helper.layout = Layout(
@@ -44,7 +49,6 @@ class FlisolInstanceForm(FoundationModelForm):
             'schedule',
             'map_center',
             'map_zoom',
-            'wiki_url',
             'country',
         )
 
@@ -63,7 +67,6 @@ class FlisolInstanceForm(FoundationModelForm):
             'description',
         )
         super(FlisolInstanceRequestForm, self).__init__(*args, **kwargs)
-
 
 
 class FlisolAttendanceForm(FoundationModelForm):

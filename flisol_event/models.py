@@ -357,6 +357,7 @@ class FlisolMachine(models.Model):
     comment = models.TextField(
         verbose_name=_('comment post installation'),
         blank=True,
+        help_text=_('do you have a special thing to say about your machine or you?'),
     )
 
     created_at = models.DateTimeField(

@@ -42,11 +42,11 @@ function addr_search() {
         var items = ['<li><a href="#" class="js-subscribe"><i class="step fi-ticket"></i></a>'];
 
         $.each(data, function(key, val) {
-            name = val.display_name.split(',')[0];
-            country = val.address.country_code;
-            lon = val.lon;
-            lat = val.lat;
-            bb = val.boundingbox;
+            var name = val.display_name.split(',')[0];
+            var country = val.address.country_code;
+            var lon = val.lon;
+            var lat = val.lat;
+            var bb = val.boundingbox;
             items.push('<li data-name="' + name + '" data-country-code="' + country + '" data-lon="' + lon + '" data-lat="' + lat + '"><a href="#" class="js-zoomto" data-l1="' + bb[0] + '" data-l2="' + bb[2] + '" data-l3="' + bb[1] + '" data-l4="' + bb[3]  + '" data-type-node="' + val.osm_type + '">' + val.display_name + '</a><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar"><i class="step fi-shopping-cart"></i></a><a href="#" class="js-create-instance" alt="Crear" title="Crear"><i class="step fi-star"></i></a></li>');
         });
 
@@ -81,27 +81,39 @@ $(function() {
     $('.searchplace').on('submit',look_for_flisol);
     $('#addr').on('click',look_for_flisol);
     $('#results').on('click', '.js-request-instance', function(){
+        $('#id_request-map_center').val(
+            $(this).parent().data('lat') + ',' +
+            $(this).parent().data('lon')
+        );
+        $('#id_request-country').val($(this).parent().data('country-code'));
+        $('#id_request-city_name').val($(this).parent().data('name'));
         $('#instance-request').foundation('reveal', 'open');
     });
     $('#results').on('click', '.js-create-instance', function(){
+        $('#id_instance-map_center').val(
+            $(this).parent().data('lat') + ',' +
+            $(this).parent().data('lon')
+        );
+        $('#id_instance-country').val($(this).parent().data('country-code'));
+        $('#id_instance-city_name').val($(this).parent().data('name'));
         $('#instance-creation').foundation('reveal', 'open');
     });
     $('#results').on('click', '.js-subscribe', function(){
-        $('#div_id_comment').hide();
+        $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });
     $('#results').on('click', '.js-zoomto', function(){
         var item = $(this);
         chooseAddr(item.data('l1'), item.data('l2'), item.data('l3'), item.data('l4'), item.data('type-node'))
     });
-    $('#id_role').on('change', function(){
-        if ($('#id_role').val() === $('.subscription-form').data('visitor-id').toString()) {
-            $('#div_id_machine_type,#div_id_requested_distro,#div_id_description').show();
-            $('#div_id_comment').hide();
+    $('#id_subscription-role').on('change', function(){
+        if ($('#id_subscription-role').val() === $('.subscription-form').data('visitor-id').toString()) {
+            $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').show();
+            $('#div_id_subscription-comment').hide();
         }
         else {
-            $('#div_id_machine_type,#div_id_requested_distro,#div_id_description').hide();
-            $('#div_id_comment').show();
+            $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
+            $('#div_id_subscription-comment').show();
         }
     })
 });
