@@ -14,6 +14,7 @@ class CountryAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'slug',
+        'iso_code',
     )
 
     readonly_fields = [
@@ -25,6 +26,7 @@ class CountryAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 ('name', 'slug'),
+                'iso_code',
                 'description',
                 ('logo_flag', 'image'),
             ),

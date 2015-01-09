@@ -48,6 +48,12 @@ class Country(models.Model):
         verbose_name=_('default map zoom'),
     )
 
+    iso_code = models.CharField(
+        max_length=3,
+        default='co',
+        verbose_name=_('country code'),
+    )
+
     created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('created at'),
