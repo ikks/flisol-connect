@@ -82,6 +82,19 @@ class FlisolInstanceRequest(models.Model):
         related_name='cities_to_create',
     )
 
+    map_center = models.CharField(
+        max_length=255,
+        default='-85.627,13.176',
+        help_text=_('lat,lon'),
+        verbose_name=_('map center on'),
+    )
+
+    country = models.CharField(
+        max_length=3,
+        default='co',
+        verbose_name=_('country code'),
+    )
+
     def __unicode__(self):
         return u'{0}'.format(self.name)
 
@@ -111,12 +124,12 @@ class FlisolInstance(models.Model):
 
     city_name = models.CharField(
         max_length=255,
-        verbose_name=_('name'),
+        verbose_name=_('city'),
     )
 
     instance_name = models.CharField(
         max_length=255,
-        verbose_name=_('name'),
+        verbose_name=_('instance'),
     )
 
     slug = models.SlugField(

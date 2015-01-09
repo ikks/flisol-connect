@@ -17,6 +17,8 @@ class FlisolInstanceRequestForm(FoundationModelForm):
     class Meta:
         model = FlisolInstanceRequest
         fields = (
+            'map_center',
+            'country',
             'city_name',
             'description',
         )

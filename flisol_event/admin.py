@@ -65,6 +65,7 @@ class FlisolEventAdmin(admin.ModelAdmin):
 class FlisolInstanceAdmin(admin.ModelAdmin):
 
     list_display = (
+        'country',
         'city_name',
         'instance_name',
         'slug',
@@ -127,6 +128,7 @@ class FlisolInstanceAdmin(admin.ModelAdmin):
 class FlisolInstanceRequestAdmin(admin.ModelAdmin):
 
     list_display = (
+        'country',
         'city_name',
         'created_at',
         'created_by',
@@ -135,6 +137,7 @@ class FlisolInstanceRequestAdmin(admin.ModelAdmin):
     search_fields = (
         'city_name',
         'created_by__email',
+        'country',
     )
 
     list_filter = (
@@ -145,7 +148,7 @@ class FlisolInstanceRequestAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                ('flisol_event', 'city_name',),
+                ('country', 'city_name',),
                 ('created_at', 'created_by'),
                 'description',
             ),
