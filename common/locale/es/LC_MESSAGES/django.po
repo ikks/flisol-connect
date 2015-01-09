@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flisol-connect 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-07 23:14-0500\n"
+"POT-Creation-Date: 2015-01-08 22:16-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: common/admin.py:32 common/admin.py:91
+#: common/admin.py:34 common/admin.py:93
 msgid "Advanced"
 msgstr ""
 
-#: common/models.py:13 common/models.py:75
+#: common/models.py:13 common/models.py:81
 msgid "name"
 msgstr ""
 
-#: common/models.py:21 common/models.py:89
+#: common/models.py:21 common/models.py:95
 msgid "description"
 msgstr ""
 
@@ -50,34 +50,38 @@ msgstr ""
 msgid "default map zoom"
 msgstr ""
 
-#: common/models.py:53 common/models.py:100
+#: common/models.py:54
+msgid "country code"
+msgstr ""
+
+#: common/models.py:59 common/models.py:106
 msgid "created at"
 msgstr ""
 
-#: common/models.py:58 common/models.py:105
+#: common/models.py:64 common/models.py:111
 msgid "created by"
 msgstr ""
 
-#: common/models.py:66
+#: common/models.py:72
 msgid "country"
 msgstr ""
 
-#: common/models.py:67
+#: common/models.py:73
 msgid "countries"
 msgstr ""
 
-#: common/models.py:85
+#: common/models.py:91
 msgid "image"
 msgstr ""
 
-#: common/models.py:94
+#: common/models.py:100
 msgid "wikipedia link"
 msgstr ""
 
-#: common/models.py:113
+#: common/models.py:119
 msgid "distribution"
 msgstr ""
 
-#: common/models.py:114
+#: common/models.py:120
 msgid "distributions"
 msgstr ""
