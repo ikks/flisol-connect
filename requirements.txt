@@ -17,3 +17,6 @@ django-zurb-foundation==5.4.7.1
 djangorestframework==3.0.2
 django-filter==0.9.1
 django-dynamic-fixture==1.8.1
+
+# Deployment
+fabric==1.10.1
