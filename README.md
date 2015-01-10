@@ -5,6 +5,7 @@ flisol-connect
 
 Presencia web en el Flisol como se describe en http://flisol.info/CT/PresenciaWeb
 
+Sitio de prueba en http://test.installfest.info
 
 Mapa de ruta
 ============
@@ -24,9 +25,6 @@ para añadir características.
 
 Este sitio está hecho en Django Y Foundation.
 
-Para correrlo en su entorno debe crear un archivo `local_settings`, cree su virtualenv y actualice las
-dependencias con pip.
-
 Traducciones
 ------------
 
@@ -36,6 +34,19 @@ portugués, estamos usando como idioma base el inglés.
 
 Para contribuir vía Transifex, por favor visite
 https://www.transifex.com/projects/p/flisol-connect/
+
+Información de distribuciones
+-----------------------------
+
+Puede ayudarnos colocando distribuciones(de Linux o sistemas operativos libres),
+por favor suscríbase a la lista de desarrollo, no hay que ser desarrollador :)
+
+Su entorno local
+----------------
+
+Para correrlo en su entorno debe crear un archivo `local_settings`, cree su
+virtualenv y actualice las dependencias con pip.
+
 
 Licencia
 ========
