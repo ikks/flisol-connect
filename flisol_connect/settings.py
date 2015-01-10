@@ -158,4 +158,7 @@ import sys
 if 'test' in sys.argv:
     from flisol_connect.test_settings import *
 else:
-    from flisol_connect.local_settings import *
+    try:
+        from flisol_connect.local_settings import *
+    except ImportError:
+        pass
