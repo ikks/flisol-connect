@@ -87,7 +87,8 @@ class DistributionAdmin(admin.ModelAdmin):
             'fields': (
                 ('name', 'slug'),
                 'description',
-                'logo', 'wikipedia',
+                'logo',
+                ('url', 'wikipedia'),
             ),
         }),
         (_('Advanced'), {

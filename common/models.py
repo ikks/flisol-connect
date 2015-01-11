@@ -89,6 +89,7 @@ class Distribution(models.Model):
         max_length=255,
         upload_to='common/distro/',
         verbose_name=_('image'),
+        blank=True,
     )
 
     description = models.TextField(
@@ -98,6 +99,12 @@ class Distribution(models.Model):
     wikipedia = models.URLField(
         max_length=255,
         verbose_name=_('wikipedia link'),
+        blank=True
+    )
+
+    url = models.URLField(
+        max_length=255,
+        verbose_name=_('official url'),
         blank=True
     )
 
