@@ -74,6 +74,7 @@ function look_for_flisol() {
             addr_search();
         }
     )
+    return false;
 }
 
 $(function() {
@@ -115,5 +116,13 @@ $(function() {
             $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
             $('#div_id_subscription-comment').show();
         }
-    })
+    });
+
+    $('.js-form').on('submit', function () {
+        $.post($(this).attr('action'), $(this).serialize().replace(/request-/g,''), function(result){
+            alert('vamos');
+            console.log(result);
+        });
+        return false;
+    });
 });

@@ -128,8 +128,8 @@ class FlisolInstanceAdmin(admin.ModelAdmin):
 class FlisolInstanceRequestAdmin(admin.ModelAdmin):
 
     list_display = (
-        'country',
         'city_name',
+        'country',
         'created_at',
         'created_by',
     )

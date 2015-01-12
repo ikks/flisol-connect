@@ -16,14 +16,12 @@ class FlisolInstanceSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'city_name',
             'instance_name',
+            'description',
             'address',
-            'slug',
+            'schedule',
             'map_center',
             'map_zoom',
-            'image',
-            'status',
-            'wiki_url',
-            'instance_date',
+            'country',
         )
 
 
@@ -32,6 +30,8 @@ class FlisolInstanceRequestSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = FlisolInstanceRequest
         fields = (
+            'map_center',
+            'country',
             'city_name',
             'description',
         )

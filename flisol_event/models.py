@@ -96,7 +96,7 @@ class FlisolInstanceRequest(models.Model):
     )
 
     def __unicode__(self):
-        return u'{0}'.format(self.name)
+        return u'{0}'.format(self.city_name)
 
     class Meta:
         verbose_name = _('flisol city request')
