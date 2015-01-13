@@ -192,7 +192,6 @@ class FlisolInstance(models.Model):
 
     wiki_url = models.URLField(
         verbose_name=u'wiki url',
-        unique=True,
         blank=False,
     )
 
