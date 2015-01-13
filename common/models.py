@@ -4,6 +4,8 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
+from autoslug import AutoSlugField
+
 
 class Country(models.Model):
     """Country Model"""
@@ -13,8 +15,9 @@ class Country(models.Model):
         verbose_name=_('name'),
     )
 
-    slug = models.SlugField(
+    slug = AutoSlugField(
         unique=True,
+        populate_from='name',
     )
 
     description = models.TextField(
@@ -81,8 +84,9 @@ class Distribution(models.Model):
         verbose_name=_('name'),
     )
 
-    slug = models.SlugField(
+    slug = AutoSlugField(
         unique=True,
+        populate_from='name',
     )
 
     logo = models.ImageField(

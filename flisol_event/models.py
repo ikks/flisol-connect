@@ -4,6 +4,8 @@ from django.db import models
 from django.conf import settings
 from django.utils.translation import ugettext as _
 
+from autoslug import AutoSlugField
+
 
 class FlisolEvent(models.Model):
     """Each year a flisol event takes place, this model
@@ -15,8 +17,9 @@ class FlisolEvent(models.Model):
         verbose_name=_('name'),
     )
 
-    slug = models.SlugField(
+    slug = AutoSlugField(
         unique=True,
+        populate_from='name',
     )
 
     logo = models.ImageField(
@@ -132,8 +135,9 @@ class FlisolInstance(models.Model):
         verbose_name=_('instance'),
     )
 
-    slug = models.SlugField(
+    slug = AutoSlugField(
         unique=True,
+        populate_from=lambda instance: instance.city_name + instance.instance_name
     )
 
     description = models.TextField(
@@ -183,7 +187,6 @@ class FlisolInstance(models.Model):
     email_contact = models.EmailField(
         verbose_name=_('email contact'),
         help_text=_('please ask for a mail list'),
-        unique=True,
         blank=False,
     )
 

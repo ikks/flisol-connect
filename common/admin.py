@@ -9,7 +9,6 @@ from common.models import Distribution
 
 @admin.register(Country)
 class CountryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
 
     list_display = (
         'name',
@@ -25,8 +24,7 @@ class CountryAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                ('name', 'slug'),
-                'iso_code',
+                ('name', 'iso_code'),
                 'description',
                 ('logo_flag', 'image'),
             ),
@@ -65,7 +63,6 @@ class CountryAdmin(admin.ModelAdmin):
 
 @admin.register(Distribution)
 class DistributionAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
 
     list_display = (
         'name',
@@ -85,7 +82,7 @@ class DistributionAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                ('name', 'slug'),
+                'name',
                 'description',
                 'logo',
                 ('url', 'wikipedia'),

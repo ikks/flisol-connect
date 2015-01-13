@@ -12,7 +12,6 @@ from flisol_event.models import FlisolMachine
 @admin.register(FlisolEvent)
 class FlisolEventAdmin(admin.ModelAdmin):
 
-    prepopulated_fields = {'slug': ('name',)}
 
     list_display = (
         'name',
@@ -29,7 +28,7 @@ class FlisolEventAdmin(admin.ModelAdmin):
         (None, {
             'fields': (
                 ('name', 'logo'),
-                ('official_date', 'slug'),
+                'official_date',
                 'description',
             ),
         }),
@@ -53,12 +52,6 @@ class FlisolEventAdmin(admin.ModelAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
-
-    def get_readonly_fields(self, request, obj=None):
-        if obj:
-            self.prepopulated_fields = {}
-            return self.readonly_fields + ('slug',)
-        return self.readonly_fields
 
 
 @admin.register(FlisolInstance)

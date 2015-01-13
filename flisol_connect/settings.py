@@ -153,6 +153,13 @@ RECAPTCHA_PRIVATE_KEY = ''
 
 CRISPY_TEMPLATE_PACK = 'foundation-5'
 
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'localhost:6379',
+    },
+}
+
 import sys
 # pylint: disable=W0401,E0611,W0614
 if 'test' in sys.argv:
