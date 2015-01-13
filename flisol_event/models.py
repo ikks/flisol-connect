@@ -226,6 +226,9 @@ class FlisolInstance(models.Model):
         through='FlisolAttendance'
     )
 
+    def iso_code(self):
+        return self.country.iso_code
+
     def __unicode__(self):
         return u'{0} {1}'.format(
             self.city_name,

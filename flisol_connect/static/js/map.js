@@ -77,6 +77,11 @@ function look_for_flisol() {
     return false;
 }
 
+function replaceall(original, to_replace, replacement) {
+    re = new RegExp(to_replace, "g");
+    return original.replace(re, replacement);
+}
+
 $(function() {
     load_map();
     $('.searchplace').on('submit',look_for_flisol);
@@ -95,7 +100,7 @@ $(function() {
             $(this).parent().data('lat') + ',' +
             $(this).parent().data('lon')
         );
-        $('#id_instance-country').val($(this).parent().data('country-code'));
+        $('#id_instance-iso_code').val($(this).parent().data('country-code'));
         $('#id_instance-city_name').val($(this).parent().data('name'));
         $('#instance-creation').foundation('reveal', 'open');
     });
@@ -119,9 +124,8 @@ $(function() {
     });
 
     $('.js-form').on('submit', function () {
-        $.post($(this).attr('action'), $(this).serialize().replace(/request-/g,''), function(result){
-            alert('vamos');
-            console.log(result);
+        $.post($(this).attr('action'), replaceall($(this).serialize(), $(this).data('prefix') , ''), function(result){
+            $(".alert-content").html('<p>Operación exitosa');
         });
         return false;
     });

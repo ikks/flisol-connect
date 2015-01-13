@@ -6,7 +6,7 @@
         <h2>{% trans 'A leader is here, a new instance' %}</h2>
         <p>{% blocktrans %}Welcome you brave, we are really happy that you are ready to start organizing your Flisol instance, please fill the fields so people can start to subscribe!!!"{% endblocktrans %}</p>
         <p>{% trans "You are our hero!!!" %}</p>
-        <form method="post" action="{% url 'api:instance' %}" class="creation-form js-form">
+        <form method="post" action="{% url 'api:instance' %}" class="creation-form js-form" data-prefix="instance-">
             {% csrf_token %}
             {{ creation_form|crispy }}
             <button class="button align-center">{% trans 'create' %}</button>
@@ -19,7 +19,7 @@
     <div>
         <h2>{% trans "Let's make it happen" %}</h2>
         <p>{% blocktrans %}You have looked for it, but there is no instance close to your place and you want to know wether it will be or not.  Please let us know so we can get track and let you know about the best opportunities available.{% endblocktrans %}</p>
-        <form method="post" action="{% url 'api:request' %}" class="request-form js-form">
+        <form method="post" action="{% url 'api:request' %}" class="request-form js-form" data-prefix="request-">
             {% csrf_token %}
             {{ request_form|crispy }}
             <button class="button align-center">{% trans 'request' %}</button>
@@ -32,7 +32,7 @@
     <div>
         <h2>Join in to <span class="instance-name">XXXXXX</span></h2>
         <p>{% blocktrans %}You are more than welcome :){% endblocktrans %}</p>
-        <form method="post" action="{% url 'api:request' %}" class="subscription-form js-form" data-visitor-id="{{ visitor_id }}">
+        <form method="post" action="{% url 'api:request' %}" class="subscription-form js-form" data-visitor-id="{{ visitor_id }}" data-prefix="subscription-|machine-">
             {% csrf_token %}
             {{ subscription_form|crispy }}
             {{ machine_form|crispy }}

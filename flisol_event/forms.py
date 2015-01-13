@@ -39,6 +39,12 @@ class FlisolInstanceRequestForm(FoundationModelForm):
 
 class FlisolInstanceForm(FoundationModelForm):
 
+    iso_code = forms.CharField(
+        label='',
+        max_length=3,
+        widget=forms.HiddenInput
+    )
+
     class Meta:
         model = FlisolInstance
         fields = (
@@ -49,13 +55,11 @@ class FlisolInstanceForm(FoundationModelForm):
             'schedule',
             'map_center',
             'map_zoom',
-            'country',
         )
 
         widgets = {
             'map_center': forms.HiddenInput,
             'map_zoom': forms.HiddenInput,
-            'country': forms.HiddenInput,
         }
 
     def _init_(self, *args, **kwargs):

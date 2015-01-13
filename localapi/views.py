@@ -21,7 +21,7 @@ class FlisolInstanceList(generics.ListCreateAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def perform_create(self, serializer):
-        serializer.save(
+        instance = serializer.save(
             created_by=self.request.user,
             flisol_event_id=cache.get('current_event_id'),
         )
