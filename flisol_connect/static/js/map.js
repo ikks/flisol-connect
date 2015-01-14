@@ -126,8 +126,10 @@ $(function() {
     });
 
     $('.js-form').on('submit', function () {
+        var the_form = $(this)
         $.post($(this).attr('action'), replaceall($(this).serialize(), $(this).data('prefix') , ''), function(result){
             $(".alert-content").html('<p>Operación exitosa').show();
+            this.closest('reveal-modal').foundation('reveal', 'close');
         });
         return false;
     });
