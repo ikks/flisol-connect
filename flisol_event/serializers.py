@@ -13,6 +13,7 @@ from rest_framework.reverse import reverse
 class FlisolInstanceSerializer(serializers.ModelSerializer):
 
     iso_code = serializers.CharField()
+
     class Meta:
         model = FlisolInstance
         fields = (
@@ -35,7 +36,6 @@ class FlisolInstanceSerializer(serializers.ModelSerializer):
         validated_data['country'] = country
         instance = FlisolInstance.objects.create(**validated_data)
         return instance
-
 
 
 class FlisolInstanceRequestSerializer(serializers.ModelSerializer):

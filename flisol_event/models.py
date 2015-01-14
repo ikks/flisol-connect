@@ -137,7 +137,7 @@ class FlisolInstance(models.Model):
 
     slug = AutoSlugField(
         unique=True,
-        populate_from=lambda instance: instance.city_name + instance.instance_name
+        populate_from=lambda inst: inst.city_name + inst.instance_name
     )
 
     description = models.TextField(
@@ -362,7 +362,9 @@ class FlisolMachine(models.Model):
     comment = models.TextField(
         verbose_name=_('comment post installation'),
         blank=True,
-        help_text=_('do you have a special thing to say about your machine or you?'),
+        help_text=_(
+            'do you have a special thing to say about your machine or you?'
+        ),
     )
 
     created_at = models.DateTimeField(

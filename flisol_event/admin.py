@@ -12,7 +12,6 @@ from flisol_event.models import FlisolMachine
 @admin.register(FlisolEvent)
 class FlisolEventAdmin(admin.ModelAdmin):
 
-
     list_display = (
         'name',
         'slug',
