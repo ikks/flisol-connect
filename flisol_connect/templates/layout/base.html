@@ -9,7 +9,7 @@
 {% endblock css %}
 
 {% block base_body %}
-<nav class="top-bar">
+<nav class="top-bar url-instances" data-url-instance-list="{% url 'api:instance' %}">
   <!-- Title -->
   <ul class="title-area">
     <li class="name"><h1><a href="/">Flisol</a></h1></li>

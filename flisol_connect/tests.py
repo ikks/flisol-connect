@@ -16,6 +16,7 @@ class GeneralTests(TestCase):
         official_date = date.today() + timedelta(30)
         G(
             FlisolEvent,
+            id=1,
             official_date=official_date,
         )
 

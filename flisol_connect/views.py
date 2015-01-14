@@ -9,6 +9,8 @@ from flisol_event.models import FlisolEvent
 from flisol_event.models import FlisolInstance
 from flisol_event.models import FlisolAttendance
 
+from constance import config
+
 
 class HomePageView(TemplateView):
 
@@ -16,16 +18,14 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(HomePageView, self).get_context_data(**kwargs)
-        latest_event = cache.get('current_event_id')
         days_to_go = cache.get('days_to_go')
+        latest_event = FlisolEvent.objects.get(id=config.CURRENT_FLISOL_ID)
         if days_to_go is None:
-            latest_event = FlisolEvent.objects.latest('id')
             days_to_go = (
                 latest_event.official_date -
                 date.today()
             ).days
             cache.set('days_to_go', days_to_go, 300)
-            cache.set('current_event_id', latest_event.id)
         if days_to_go >= 0:
             context['days_to_go'] = days_to_go
 

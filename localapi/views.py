@@ -12,6 +12,7 @@ from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework import filters
 from rest_framework import permissions
+from constance import config
 
 
 class FlisolInstanceList(generics.ListCreateAPIView):
@@ -24,10 +25,10 @@ class FlisolInstanceList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         instance = serializer.save(
             created_by=self.request.user,
-            flisol_event_id=cache.get('current_event_id'),
+            flisol_event_id=config.CURRENT_FLISOL_ID,
         )
         if not FlisolAttendance.objects.filter(
-            flisol_instance__id=cache.get('current_event_id'),
+            flisol_instance__id=config.CURRENT_FLISOL_ID,
             user=self.request.user,
         ).exists():
             FlisolAttendance.objects.create(
@@ -46,7 +47,7 @@ class FlisolInstanceRequestList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(
             created_by=self.request.user,
-            flisol_event_id=cache.get('current_event_id'),
+            flisol_event_id=config.CURRENT_FLISOL_ID,
         )
 
     def get_queryset(self):

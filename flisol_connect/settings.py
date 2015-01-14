@@ -45,6 +45,7 @@ INSTALLED_APPS = TEST_PROJECT_APPS + (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'constance',
     'crispy_forms',
     'crispy_forms_foundation',
     'debug_toolbar',
@@ -80,6 +81,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'social.apps.django_app.context_processors.backends',
     'django.core.context_processors.i18n',
     'social.apps.django_app.context_processors.login_redirect',
+    'constance.context_processors.config',
 )
 
 LOGIN_REDIRECT_URL = '/'
@@ -158,6 +160,14 @@ CACHES = {
         'BACKEND': 'redis_cache.RedisCache',
         'LOCATION': 'localhost:6379',
     },
+}
+
+CONSTANCE_REDIS_PREFIX = 'constance:gecolsa:'
+CONSTANCE_CONFIG = {
+    'CURRENT_FLISOL_ID': (
+        1,
+        u'id of the current Flisol Event'
+    ),
 }
 
 import sys

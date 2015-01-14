@@ -18,9 +18,10 @@ djangorestframework==3.0.2
 django-filter==0.9.1
 django-dynamic-fixture==1.8.1
 django-redis-cache==0.13.0
+django-constance==1.0.1
 
 # Deployment
 fabric==1.10.1
 
-# Fix for Django 1.7
+# Fix for Django 1.7 in autoslug
 https://bitbucket.org/axiacore/django-autoslug/get/d163a44269a0.zip

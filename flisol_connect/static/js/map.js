@@ -9,9 +9,11 @@ function load_map() {
         osm = new L.TileLayer(osmUrl, {maxZoom: 13, attribution: osmAttribution});
 
     map.setView(new L.LatLng(-8 , -70), 3).addLayer(osm);
-     L.marker([2.939, -75.29455]).addTo(map).bindPopup('Neiva, 23 de Abril de 2.015');
-     L.marker([-22.9209, -43.25151]).addTo(map).bindPopup('Río de Janeiro, 24 de Abril de 2.015');
-     L.marker([20.37778, -76.6444]).addTo(map).bindPopup('Bayamo, 24 de Abril de 2.015');
+    $.get($('.url-instances').data('url-instance-list'), function(result){
+        for (var i=0; i < result.length; i++){
+            L.marker(result[i].map_center.split(',')).addTo(map).bindPopup(result[i].city_name);
+        }
+    });
 }
 
 function chooseAddr(lat1, lng1, lat2, lng2, osm_type) {
@@ -125,7 +127,7 @@ $(function() {
 
     $('.js-form').on('submit', function () {
         $.post($(this).attr('action'), replaceall($(this).serialize(), $(this).data('prefix') , ''), function(result){
-            $(".alert-content").html('<p>Operación exitosa');
+            $(".alert-content").html('<p>Operación exitosa').show();
         });
         return false;
     });
