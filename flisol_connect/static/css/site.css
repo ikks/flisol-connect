@@ -39,3 +39,8 @@ div#results {
     width: 90%;
     margin-right: 5%;
 }
+
+.tabs dd.active a {
+    background-color: #E25F1B;
+    color: #FFF;
+}

@@ -124,7 +124,7 @@
     {% verbatim %}
     {{#each this}}
       <li data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
-        <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false">{{ display_name }}</a>
+        <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false" data-options="align: right">{{ display_name }}</a>
         <ul id="drop-result-{{@index}}" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
           <li><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar">Solicitar <i class="step fi-shopping-cart"></i></a></li>
           <li><a href="#" class="js-create-instance" alt="Crear" title="Crear">Crear <i class="step fi-star"></i></a></li>
