@@ -9,102 +9,148 @@
 {% endblock css %}
 
 {% block base_body %}
-<nav class="top-bar url-instances" data-url-instance-list="{% url 'api:instance' %}">
-  <!-- Title -->
-  <ul class="title-area">
-    <li class="name"><h1><a href="/">Flisol</a></h1></li>
-  </ul>
+  <nav class="top-bar url-instances" data-url-instance-list="{% url 'api:instance' %}">
+    <!-- Title -->
+    <ul class="title-area">
+      <li class="name"><h1><a href="/">Flisol</a></h1></li>
+    </ul>
 
-  <!-- Top Bar Section -->
+    <!-- Top Bar Section -->
 
-    <section class="top-bar-section">
+      <section class="top-bar-section">
 
-    <!-- Top Bar Left Nav Elements -->
-    <ul class="left">
+      <!-- Top Bar Left Nav Elements -->
+      <ul class="left">
 
-      <!-- Search | has-form wrapper -->
-      <li class="has-form">
-        <div class="row"><form class="searchplace">
-          <div class="small-12 columns">
-            <div class="row collapse">
-              <div class="small-10 columns">
-                <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
-              </div>
-              <div class="small-2 columns">
-                <a href="#" class="alert button expand" id="addr" name="addr"><i class="step fi-magnifying-glass"></i></a>
+        <!-- Search | has-form wrapper -->
+        <li class="has-form">
+          <div class="row"><form class="searchplace">
+            <div class="small-12 columns">
+              <div class="row collapse">
+                <div class="small-10 columns">
+                  <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
+                </div>
+                <div class="small-2 columns">
+                  <a href="#" class="alert button expand" id="addr" name="addr"><i class="step fi-magnifying-glass"></i></a>
+                </div>
               </div>
             </div>
+          </form></div>
+        </li>
+      </ul>
+
+      <!-- Top Bar Right Nav Elements -->
+      {% block login %}
+      <ul class="right">
+        <!-- Button -->
+        <li>
+          {% if user.is_authenticated %}
+          <a href="{% url 'user:profile_update' %}" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
+        </li>
+        <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i></a>
+        </li>
+        <li>
+          {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i>{% endif %}</a>
+      {% else %}
+          <a href="{% url 'user:login' %}"><i class="step fi-at-sign">{% trans 'Login' %}</i></a>
+      {% endif %}
+        </li>
+      </ul>
+      {% endblock login %}
+    </section>
+    <span></span>
+  </nav>
+  <div id="search" class="reveal-modal" data-reveal data-flisol-search-url="{% url 'api:instance' %}">
+      <a class="close-reveal-modal">&#215;</a>
+      <div id="">
+          <dl class="tabs" data-tab>
+            <dd class="active"><a href="#instance-list">Instancias</a></dd>
+            <dd><a href="#results">Más opciones</a></dd>
+          </dl>
+          <div class="tabs-content">
+            <div class="content active" id="instance-list">
+            </div>
+            <div class="content" id="results">
+              <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+            </div>
           </div>
-        </form></div>
-      </li>
-    </ul>
+      </div>
+  </div>
+  <div data-alert class="alert-box" style="display:none">
+    <div class="alert-content"></div>
+    <a href="#" class="close">&times;</a>
+  </div>
+  {% basic_forms %}
+  {% block content %}
+    <div class="text-center flisol-top">
+      {% if days_to_go > 0 %}
+        <h1>{% blocktrans %}{{ days_to_go }} days for Flisol{% endblocktrans %}</h1>
+      {% elif days_to_go == 0 %}
+        <h1>{% blocktrans %}Today is Flisol, hang on{% endblocktrans %}</h1>
+      {% endif %}
+        <div class="medium-12 large-4 columns">
+            <h1 class="text-center">{% blocktrans %}{{ subscriptions }} subscriptions{% endblocktrans %}</h1>
+        </div>
+        <div class="medium-12 large-4 columns">
+            <h1 class="text-center">{% blocktrans %}{{ instances }} instances{% endblocktrans %}</h1>
+        </div>
+        <div class="medium-12 large-4 columns">
+            <h1>{% blocktrans %}{{ volunteers }} volunteers{% endblocktrans %}</h1>
+        </div>
+    </div>
 
-    <!-- Top Bar Right Nav Elements -->
-    {% block login %}
-    <ul class="right">
-      <!-- Button -->
-      <li>
-        {% if user.is_authenticated %}
-        <a href="{% url 'user:profile_update' %}" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
+    <div id="map"></div>
+  {% endblock content %}
+  <div class="flisol-footer text-center">
+    <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Has Dropdown</a>
+<ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+  <li><a href="#">This is a link</a></li>
+  <li><a href="#">This is another</a></li>
+  <li><a href="#">Yet another</a></li>
+</ul>
+      <p>{% trans 'Made with tons of love' %}. <a href="https://github.com/ikks/flisol-connect"><i class="step fi-social-github size-36"></i></a></p>
+      <p>2.014 -</p>
+      <p>{% trans 'Powered by' %}
+        <a href="http://djangoproject.com">Django</a>,
+        <a href="http://foundation.zurb.com">Foundation</a>,
+        <a href="http://leafletjs.com">Leaflet</a>,
+        <a href="http://osm.org">OSM</a>,
+        <a href="http://postgresql.org">Postgresql</a>,
+        <a href="http://redis.io">Redis</a>.</p>
+  </div>
+  <script type="text/x-handlebars-template" id="result-template">
+    <h2>Algunos sitios que coinciden</h2>
+    <ul>
+    {% verbatim %}
+    {{#each this}}
+      <li data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
+        <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false">{{ display_name }}</a>
+        <ul id="drop-result-{{@index}}" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar">Solicitar <i class="step fi-shopping-cart"></i></a></li>
+          <li><a href="#" class="js-create-instance" alt="Crear" title="Crear">Crear <i class="step fi-star"></i></a></li>
+        </ul>
       </li>
-      <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i></a>
-      </li>
-      <li>
-        {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i>{% endif %}</a>
-    {% else %}
-        <a href="{% url 'user:login' %}"><i class="step fi-at-sign">{% trans 'Login' %}</i></a>
-    {% endif %}
-      </li>
+    {{/each}}
+    {% endverbatim %}
     </ul>
-    {% endblock login %}
-  </section>
-  <span></span>
-</nav>
-<div id="search" class="reveal-modal" data-reveal data-flisol-search-url="{% url 'api:instance' %}">
-    <a class="close-reveal-modal">&#215;</a>
-    <div id="results"></div>
-</div>
-<div data-alert class="alert-box" style="display:none">
-  <div class="alert-content"></div>
-  <a href="#" class="close">&times;</a>
-</div>
-{% basic_forms %}
-{% block content %}
-<div class="text-center flisol-top">
-  {% if days_to_go > 0 %}
-    <h1>{% blocktrans %}{{ days_to_go }} days for Flisol{% endblocktrans %}</h1>
-  {% elif days_to_go == 0 %}
-    <h1>{% blocktrans %}Today is Flisol, hang on{% endblocktrans %}</h1>
-  {% endif %}
-    <div class="medium-12 large-4 columns">
-        <h1 class="text-center">{% blocktrans %}{{ subscriptions }} subscriptions{% endblocktrans %}</h1>
-    </div>
-    <div class="medium-12 large-4 columns">
-        <h1 class="text-center">{% blocktrans %}{{ instances }} instances{% endblocktrans %}</h1>
-    </div>
-    <div class="medium-12 large-4 columns">
-        <h1>{% blocktrans %}{{ volunteers }} volunteers{% endblocktrans %}</h1>
-    </div>
-</div>
-
-<div id="map"></div>
-{% endblock content %}
-<div class="flisol-footer text-center">
-    <p>{% trans 'Made with tons of love' %}. <a href="https://github.com/ikks/flisol-connect"><i class="step fi-social-github size-36"></i></a></p>
-    <p>2.014 -</p>
-    <p>{% trans 'Powered by' %}
-      <a href="http://djangoproject.com">Django</a>,
-      <a href="http://foundation.zurb.com">Foundation</a>,
-      <a href="http://leafletjs.com">Leaflet</a>,
-      <a href="http://osm.org">OSM</a>,
-      <a href="http://postgresql.org">Postgresql</a>,
-      <a href="http://redis.io">Redis</a>.</p>
-</div>
+  </script>
+  <script type="text/x-handlebars-template" id="instance-list-template">
+    <h2>Estás de suerte</h2>
+    <ul>
+    {% verbatim %}
+    {{#each this}}
+      <li data-instance-id="{{ id }}">
+        <a href="#" class="js-subscribe"><i class="step fi-ticket"></i> {{ city_name }} - {{ instance_name }}</a>
+      </li>
+    {{/each}}
+    {% endverbatim %}
+    </ul>
+  </script>
 {% endblock %}
 
 {% block body_js %}
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <script src="{% static 'js/map.js' %}"></script>
-<script src="{% static 'js/vendor/knockout-3.2.0.js' %}"></script>
+<script src="{% static 'js/vendor/handlebars-v2.0.0.js' %}"></script>
 {% endblock %}

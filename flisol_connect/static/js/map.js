@@ -41,7 +41,7 @@ function addr_search() {
     var inp = $("#flisol-place");
 
     $.getJSON('http://nominatim.openstreetmap.org/search?format=json&viewbox=-115,81,-35,-56&addressdetails=1&bounded=1&limit=5&q=' + inp.val(), function(data) {
-        var items = ['<li><a href="#" class="js-subscribe"><i class="step fi-ticket"></i></a>'];
+        var items = [];
 
         $.each(data, function(key, val) {
             var name = val.display_name.split(',')[0];
@@ -49,19 +49,22 @@ function addr_search() {
             var lon = val.lon;
             var lat = val.lat;
             var bb = val.boundingbox;
-            items.push('<li data-name="' + name + '" data-country-code="' + country + '" data-lon="' + lon + '" data-lat="' + lat + '"><a href="#" class="js-zoomto" data-l1="' + bb[0] + '" data-l2="' + bb[2] + '" data-l3="' + bb[1] + '" data-l4="' + bb[3]  + '" data-type-node="' + val.osm_type + '">' + val.display_name + '</a><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar"><i class="step fi-shopping-cart"></i></a><a href="#" class="js-create-instance" alt="Crear" title="Crear"><i class="step fi-star"></i></a></li>');
+            items.push({
+                'name': name,
+                'country': country,
+                'lon': lon,
+                'lat': lat,
+                'bb0': bb[0],
+                'bb2': bb[2],
+                'bb1': bb[1],
+                'bb3': bb[3],
+                'osm_type': val.osm_type,
+                'display_name': val.display_name,
+            });
         });
 
-        $('#results').empty();
-        if (items.length != 0) {
-            $('<h1>', { html: "Algunos sitios que coinciden:" }).appendTo('#results');
-            $('<ul/>', {
-                'class': 'my-new-list',
-                html: items.join('')
-            }).appendTo('#results');
-        } else {
-            $('<p>', { html: "No encontramos nada" }).appendTo('#results');
-        }
+        var template = Handlebars.compile($('#result-template').html());
+        $('#results').empty().html(template(items));
         $('#search').foundation('reveal', 'open');
         inp.val('');
     });
@@ -69,9 +72,14 @@ function addr_search() {
 }
 
 function look_for_flisol() {
-    $.get($('#search').data('flisol-search-url') + '?q=' + $("#flisol-place").val(),
+    $.get($('#search').data('flisol-search-url') + '?search=' + $("#flisol-place").val(),
         function(result){
             if (result.length === 0) {
+            }
+            else {
+                console.log(result);
+                var template = Handlebars.compile($('#instance-list-template').html());
+                $('#instance-list').empty().html(template(result));
             }
             addr_search();
         }
@@ -106,7 +114,8 @@ $(function() {
         $('#id_instance-city_name').val($(this).parent().data('name'));
         $('#instance-creation').foundation('reveal', 'open');
     });
-    $('#results').on('click', '.js-subscribe', function(){
+    $('#instance-list').on('click', '.js-subscribe', function(){
+        $('#id_machine-flisol_instance').val($(this).parent().data('instance-id'));
         $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });

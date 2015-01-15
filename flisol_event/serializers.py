@@ -17,6 +17,7 @@ class FlisolInstanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = FlisolInstance
         fields = (
+            'id',
             'city_name',
             'instance_name',
             'description',

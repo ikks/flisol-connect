@@ -170,6 +170,10 @@ CONSTANCE_CONFIG = {
     ),
 }
 
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',)
+}
+
 import sys
 # pylint: disable=W0401,E0611,W0614
 if 'test' in sys.argv:
