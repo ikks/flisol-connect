@@ -30,7 +30,7 @@ class FlisolInstanceSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """
-        Create and return a new `Snippet` instance, given the validated data.
+        Create and return a new `FlisolInstance` instance.
         """
         country = Country.objects.get(iso_code=validated_data['iso_code'])
         del validated_data['iso_code']
