@@ -116,6 +116,7 @@ $(function() {
     });
     $('#instance-list').on('click', '.js-subscribe', function(){
         $('#id_machine-flisol_instance').val($(this).parent().data('instance-id'));
+        $('.instance-name').html($(this).parent().data('instance-name'));
         $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });
