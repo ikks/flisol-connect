@@ -84,12 +84,10 @@ function addr_search() {
 function look_for_flisol() {
     $.get($('#search').data('flisol-search-url') + '?search=' + $("#flisol-place").val(),
         function(result){
-            if (result.length === 0) {
-
-            }
-            else {
+            $('#instance-list').empty();
+            if (result.length > 0) {
                 var template = Handlebars.compile($('#instance-list-template').html());
-                $('#instance-list').empty().html(template(result));
+                $('#instance-list').html(template(result));
             }
             addr_search();
         }
@@ -108,25 +106,25 @@ $(function() {
     $('#addr').on('click',look_for_flisol);
     $('#place-list').on('click', '.js-request-instance', function(){
         $('#id_request-map_center').val(
-            $(this).parent().data('lat') + ',' +
-            $(this).parent().data('lon')
+            $(this).closest('.data-info').data('lat') + ',' +
+            $(this).closest('.data-info').data('lon')
         );
-        $('#id_request-country').val($(this).parent().data('country-code'));
-        $('#id_request-city_name').val($(this).parent().data('name'));
+        $('#id_request-country').val($(this).closest('.data-info').data('country-code'));
+        $('#id_request-city_name').val($(this).closest('.data-info').data('name'));
         $('#instance-request').foundation('reveal', 'open');
     });
     $('#place-list').on('click', '.js-create-instance', function(){
         $('#id_instance-map_center').val(
-            $(this).parent().data('lat') + ',' +
-            $(this).parent().data('lon')
+            $(this).closest('.data-info').data('lat') + ',' +
+            $(this).closest('.data-info').data('lon')
         );
-        $('#id_instance-iso_code').val($(this).parent().data('country-code'));
-        $('#id_instance-city_name').val($(this).parent().data('name'));
+        $('#id_instance-iso_code').val($(this).closest('.data-info').data('country-code'));
+        $('#id_instance-city_name').val($(this).closest('.data-info').data('name'));
         $('#instance-creation').foundation('reveal', 'open');
     });
     $('#instance-list').on('click', '.js-subscribe', function(){
-        $('#id_machine-flisol_instance').val($(this).parent().data('instance-id'));
-        $('.instance-name').html($(this).parent().data('instance-name'));
+        $('#id_machine-flisol_instance').val($(this).closest('.data-info').data('instance-id'));
+        $('.instance-name').html($(this).closest('.data-info').data('instance-name'));
         $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });
@@ -136,20 +134,34 @@ $(function() {
     });
     $('#id_subscription-role').on('change', function(){
         if ($('#id_subscription-role').val() === $('.subscription-form').data('visitor-id').toString()) {
-            $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').show();
+            $('#div_id_subscription-has_machine').show();
+            if ($('#id_subscription-has_machine').is(":checked")) {
+                $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').show();
+            }
+            else {
+                $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
+            }
             $('#div_id_subscription-comment').hide();
         }
         else {
-            $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
+            $('#div_id_subscription-has_machine,#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
             $('#div_id_subscription-comment').show();
         }
+    });
+    $('#id_subscription-has_machine').on('change', function() {
+        if ($('#id_subscription-has_machine').is(":checked")) {
+                $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').show();
+            }
+            else {
+                $('#div_id_machine-machine_type,#div_id_machine-requested_distro,#div_id_machine-description').hide();
+            }
     });
 
     $('.js-form').on('submit', function () {
         var the_form = $(this)
         $.post($(this).attr('action'), replaceall($(this).serialize(), $(this).data('prefix') , ''), function(result){
             $(".alert-content").html('<p>Operación exitosa').show();
-            this.closest('reveal-modal').foundation('reveal', 'close');
+            $('.reveal-modal').foundation('reveal', 'close');
         });
         return false;
     });

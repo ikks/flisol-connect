@@ -30,7 +30,7 @@
 <div id="instance-subscription" class="reveal-modal medium" data-reveal>
     <a class="close-reveal-modal">&#215;</a>
     <div>
-        <h2>Join in to <span class="instance-name">XXXXXX</span></h2>
+        <h2>Come on, Join to <span class="instance-name">XXXXXX</span></h2>
         <p>{% blocktrans %}You are more than welcome :){% endblocktrans %}</p>
         <form method="post" action="{% url 'api:subscribe' %}" class="subscription-form js-form" data-visitor-id="{{ visitor_id }}" data-prefix="subscription-|machine-">
             {% csrf_token %}

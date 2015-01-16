@@ -88,13 +88,13 @@
         <h1>{% blocktrans %}Today is Flisol, hang on{% endblocktrans %}</h1>
       {% endif %}
         <div class="medium-12 large-4 columns">
-            <h1 class="text-center">{% blocktrans %}{{ subscriptions }} subscriptions{% endblocktrans %}</h1>
+            <h1 class="text-center"><span class="subscription_count">{{ subscriptions }}</span> {% if subscriptions == 1 %}{%trans 'subscription' %}{% else %}{% trans 'subscriptions' %}{% endif %}</h1>
         </div>
         <div class="medium-12 large-4 columns">
-            <h1 class="text-center">{% blocktrans %}{{ instances }} instances{% endblocktrans %}</h1>
+            <h1 class="text-center"><span class="instance_count">{{ instances }}</span> {% if instances == 1 %}{% trans 'instance' %}{% else %}{% trans 'instances' %}{% endif %}</h1>
         </div>
         <div class="medium-12 large-4 columns">
-            <h1>{% blocktrans %}{{ volunteers }} volunteers{% endblocktrans %}</h1>
+            <h1><span class="volunteer_count">{{ volunteers }}</span> {% if volunteers == 1 %}{% trans 'volunteer' %}{% else %}{% trans 'volunteers' %}{% endif %}</h1>
         </div>
     </div>
 
@@ -116,7 +116,7 @@
     <ul>
     {% verbatim %}
     {{#each places}}
-      <li data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
+      <li class="data-info" data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
         <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false" data-options="align: right">{{ display_name }}</a>
         <ul id="drop-result-{{@index}}" class="micro f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
           <li><a href="#" class="js-request-instance" alt="{{ ../help_request }}" title="{{ ../help_request }}">{{ ../label_request }} <i class="step fi-shopping-cart"></i></a></li>
@@ -132,7 +132,7 @@
     <ul>
     {% verbatim %}
     {{#each this}}
-      <li data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}">
+      <li class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}">
         <a href="#" class="js-subscribe"><i class="step fi-ticket"></i> {{ city_name }} - {{ instance_name }} {{ iso_code }}</a>
       </li>
     {{/each}}

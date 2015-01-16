@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-from django import forms
 from crispy_forms_foundation.forms import FoundationModelForm
+from django import forms
+from django.utils.translation import ugettext as _
 
 from flisol_event.models import FlisolInstance
 from flisol_event.models import FlisolAttendance
@@ -74,6 +75,11 @@ class FlisolInstanceForm(FoundationModelForm):
 
 
 class FlisolAttendanceForm(FoundationModelForm):
+
+    has_machine = forms.BooleanField(
+        label=_('I have a machine to be migrated!!!!!'),
+        initial=True,
+    )
 
     class Meta:
         model = FlisolAttendance
