@@ -65,12 +65,12 @@
       <div id="">
           <dl class="tabs" data-tab>
             <dd class="active"><a href="#instance-list">{% trans 'The planned places' %}</a></dd>
-            <dd><a href="#results">{% trans 'More options' %}</a></dd>
+            <dd><a href="#place-list">{% trans 'More options' %}</a></dd>
           </dl>
           <div class="tabs-content">
             <div class="content active" id="instance-list">
             </div>
-            <div class="content" id="results">
+            <div class="content" id="place-list" data-label-create="{% trans 'create' %}" data-help-create="{% trans 'you are the one that will create' %}" data-label-request="{% trans 'request' %}" data-help-request="{% trans 'you want a Flisol, ask for one here' %}">
             </div>
           </div>
       </div>
@@ -112,15 +112,15 @@
         <a href="http://redis.io">Redis</a>.</p>
   </div>
   <script type="text/x-handlebars-template" id="result-template">
-    <h2>{% trans 'some places for you' %}</h2>
+    <h2>{% trans 'some places for you' %} </h2>
     <ul>
     {% verbatim %}
-    {{#each this}}
+    {{#each places}}
       <li data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
         <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false" data-options="align: right">{{ display_name }}</a>
-        <ul id="drop-result-{{@index}}" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <li><a href="#" class="js-request-instance" alt="Solicitar" title="Solicitar">Solicitar <i class="step fi-shopping-cart"></i></a></li>
-          <li><a href="#" class="js-create-instance" alt="Crear" title="Crear">Crear <i class="step fi-star"></i></a></li>
+        <ul id="drop-result-{{@index}}" class="micro f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><a href="#" class="js-request-instance" alt="{{ ../help_request }}" title="{{ ../help_request }}">{{ ../label_request }} <i class="step fi-shopping-cart"></i></a></li>
+          <li><a href="#" class="js-create-instance" alt="{{ ../help_create }}" title="{{ ../help_create }}">{{ ../label_create }} <i class="step fi-star"></i></a></li>
         </ul>
       </li>
     {{/each}}

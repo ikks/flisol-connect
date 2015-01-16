@@ -44,3 +44,7 @@ div#results {
     background-color: #E25F1B;
     color: #FFF;
 }
+
+ul.micro.f-dropdown.drop-right.open {
+    max-width: 100px
+}

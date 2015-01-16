@@ -62,9 +62,17 @@ function addr_search() {
                 'display_name': val.display_name,
             });
         });
-
+        var data = {
+            'places': items,
+            'label_create': $('#place-list').data('label-create'),
+            'help_create': $('#place-list').data('help-create'),
+            'label_request': $('#place-list').data('label-request'),
+            'help_request': $('#place-list').data('help-request'),
+        }
+        console.log($('#place-list').data('label-create'));
+        console.log($('#place-list'));
         var template = Handlebars.compile($('#result-template').html());
-        $('#results').empty().html(template(items));
+        $('#place-list').empty().html(template(data));
         $(document).foundation();
         $(document).foundation('reveal', 'reflow');
         $('#search').foundation('reveal', 'open');
@@ -77,6 +85,7 @@ function look_for_flisol() {
     $.get($('#search').data('flisol-search-url') + '?search=' + $("#flisol-place").val(),
         function(result){
             if (result.length === 0) {
+
             }
             else {
                 var template = Handlebars.compile($('#instance-list-template').html());
@@ -97,7 +106,7 @@ $(function() {
     load_map();
     $('.searchplace').on('submit',look_for_flisol);
     $('#addr').on('click',look_for_flisol);
-    $('#results').on('click', '.js-request-instance', function(){
+    $('#place-list').on('click', '.js-request-instance', function(){
         $('#id_request-map_center').val(
             $(this).parent().data('lat') + ',' +
             $(this).parent().data('lon')
@@ -106,7 +115,7 @@ $(function() {
         $('#id_request-city_name').val($(this).parent().data('name'));
         $('#instance-request').foundation('reveal', 'open');
     });
-    $('#results').on('click', '.js-create-instance', function(){
+    $('#place-list').on('click', '.js-create-instance', function(){
         $('#id_instance-map_center').val(
             $(this).parent().data('lat') + ',' +
             $(this).parent().data('lon')
@@ -121,7 +130,7 @@ $(function() {
         $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });
-    $('#results').on('click', '.js-zoomto', function(){
+    $('#place-list').on('click', '.js-zoomto', function(){
         var item = $(this);
         chooseAddr(item.data('l1'), item.data('l2'), item.data('l3'), item.data('l4'), item.data('type-node'))
     });
