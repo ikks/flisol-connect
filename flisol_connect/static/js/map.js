@@ -65,6 +65,8 @@ function addr_search() {
 
         var template = Handlebars.compile($('#result-template').html());
         $('#results').empty().html(template(items));
+        $(document).foundation();
+        $(document).foundation('reveal', 'reflow');
         $('#search').foundation('reveal', 'open');
         inp.val('');
     });
@@ -77,7 +79,6 @@ function look_for_flisol() {
             if (result.length === 0) {
             }
             else {
-                console.log(result);
                 var template = Handlebars.compile($('#instance-list-template').html());
                 $('#instance-list').empty().html(template(result));
             }
