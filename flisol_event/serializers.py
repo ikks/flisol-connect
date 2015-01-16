@@ -1,10 +1,13 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from django.contrib.auth import get_user_model
+from django.utils.translation import ugettext as _
 
 from common.models import Country
+from flisol_event.models import FlisolAttendance
 from flisol_event.models import FlisolInstance
 from flisol_event.models import FlisolInstanceRequest
+from flisol_event.models import FlisolMachine
 
 from rest_framework import serializers
 from rest_framework.reverse import reverse
@@ -49,3 +52,39 @@ class FlisolInstanceRequestSerializer(serializers.ModelSerializer):
             'city_name',
             'description',
         )
+
+
+class FlisolAttendanceSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FlisolAttendance
+        fields = (
+            'id',
+            'role',
+            'flisol_instance',
+            'user',
+            'comment',
+        )
+
+    def validate(self, data):
+        if FlisolAttendance.objects.filter(
+            user=data['user'],
+            flisol_instance=data['flisol_instance'],
+        ).exists():
+            raise serializers.ValidationError(
+                _('You are allowed to subscribe just once')
+            )
+
+
+class FlisolMachineSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = FlisolMachine
+        fields = (
+            'id',
+            'flisol_instance',
+            'machine_type',
+            'registar',
+            'description',
+        )
+

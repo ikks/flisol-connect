@@ -32,7 +32,7 @@
     <div>
         <h2>Join in to <span class="instance-name">XXXXXX</span></h2>
         <p>{% blocktrans %}You are more than welcome :){% endblocktrans %}</p>
-        <form method="post" action="" class="subscription-form js-form" data-visitor-id="{{ visitor_id }}" data-prefix="subscription-|machine-">
+        <form method="post" action="{% url 'api:subscribe' %}" class="subscription-form js-form" data-visitor-id="{{ visitor_id }}" data-prefix="subscription-|machine-">
             {% csrf_token %}
             {{ subscription_form|crispy }}
             {{ machine_form|crispy }}

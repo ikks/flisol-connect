@@ -2,17 +2,22 @@
 # -*- coding: utf-8 -*-
 from django.core.cache import cache
 
+from flisol_event.models import FlisolAttendance
 from flisol_event.models import FlisolInstance
 from flisol_event.models import FlisolInstanceRequest
-from flisol_event.models import FlisolAttendance
-from flisol_event.serializers import FlisolInstanceSerializer
+from flisol_event.serializers import FlisolAttendanceSerializer
 from flisol_event.serializers import FlisolInstanceRequestSerializer
+from flisol_event.serializers import FlisolInstanceSerializer
+from flisol_event.serializers import FlisolMachineSerializer
 
-from rest_framework import viewsets
-from rest_framework import generics
-from rest_framework import filters
-from rest_framework import permissions
 from constance import config
+from rest_framework import filters
+from rest_framework import generics
+from rest_framework import permissions
+from rest_framework import status
+from rest_framework import viewsets
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
 class FlisolInstanceList(generics.ListCreateAPIView):
@@ -55,4 +60,30 @@ class FlisolInstanceRequestList(generics.ListCreateAPIView):
         queryset = super(FlisolInstanceRequestList, self).get_queryset()
         if self.request.user.is_staff == True:
             return queryset
-        queryset = queryset.filter(created_by=self.request.user)
+        if self.request.user.is_authenticated():
+            queryset = queryset.filter(created_by=self.request.user)
+        return queryset
+
+
+class FlisolSubscriptionCreation(APIView):
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+
+    def post(self, request, format=None):
+        data = dict(request.data.items())
+        data['user'] = request.user.id
+        att_serializer = FlisolAttendanceSerializer(data=data)
+        if att_serializer.is_valid():
+            attendance = att_serializer.save()
+        else:
+            data['errors'] = att_serializer.errors
+
+        if attendance.role == attendance.ATTENDANCE_CHOICES_VISITOR:
+            data['registar'] = request.user.id
+            comment = data.pop('comment')
+            mac_serializer = FlisolMachineSerializer(data=data)
+            if mac_serializer.is_valid():
+                machine = mac_serializer.save()
+            data['comment'] = comment
+
+        return Response(data)
+

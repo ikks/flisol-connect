@@ -345,6 +345,7 @@ class FlisolMachine(models.Model):
         verbose_name=_('requested distro'),
         related_name='machines_requesting',
         null=True,
+        blank=True,
     )
 
     installed_distro = models.ForeignKey(
@@ -352,6 +353,7 @@ class FlisolMachine(models.Model):
         verbose_name=_('installed distro'),
         related_name='machines',
         null=True,
+        blank=True,
     )
 
     description = models.TextField(

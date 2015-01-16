@@ -21,4 +21,9 @@ urlpatterns = patterns(
         views.FlisolInstanceRequestList.as_view(),
         name='request',
     ),
+    url(
+        r'^inscripciones/$',
+        views.FlisolSubscriptionCreation.as_view(),
+        name='subscribe',
+    ),
 )
