@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flisol-connect 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-15 19:41-0500\n"
+"POT-Creation-Date: 2015-01-16 22:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,10 @@ msgstr ""
 msgid "additional"
 msgstr ""
 
+#: flisol_event/forms.py:80
+msgid "I have a machine to be migrated!!!!!"
+msgstr ""
+
 #: flisol_event/models.py:17 flisol_event/models.py:63
 msgid "name"
 msgstr ""
@@ -31,7 +35,7 @@ msgid "image"
 msgstr ""
 
 #: flisol_event/models.py:32 flisol_event/models.py:67
-#: flisol_event/models.py:144 flisol_event/models.py:358
+#: flisol_event/models.py:144 flisol_event/models.py:360
 msgid "description"
 msgstr ""
 
@@ -41,7 +45,7 @@ msgstr ""
 
 #: flisol_event/models.py:41 flisol_event/models.py:73
 #: flisol_event/models.py:205 flisol_event/models.py:272
-#: flisol_event/models.py:372
+#: flisol_event/models.py:374
 msgid "created at"
 msgstr ""
 
@@ -235,20 +239,24 @@ msgstr ""
 msgid "requested distro"
 msgstr ""
 
-#: flisol_event/models.py:352
+#: flisol_event/models.py:353
 msgid "installed distro"
 msgstr ""
 
-#: flisol_event/models.py:363
+#: flisol_event/models.py:365
 msgid "comment post installation"
 msgstr ""
 
-#: flisol_event/models.py:366
+#: flisol_event/models.py:368
 msgid "do you have a special thing to say about your machine or you?"
 msgstr ""
 
-#: flisol_event/models.py:377
+#: flisol_event/models.py:379
 msgid "installed at"
+msgstr ""
+
+#: flisol_event/serializers.py:75
+msgid "You are allowed to subscribe just once"
 msgstr ""
 
 #: flisol_event/templates/flisol_event/_main_forms.html:6
