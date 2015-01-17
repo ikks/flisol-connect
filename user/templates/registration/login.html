@@ -21,10 +21,9 @@
     <form method="post" action="/complete/persona/">
         <input type="hidden" name="assertion" value="" />
         <a rel="nofollow" id="persona" href="#"><i class="step fi-torso">Mozilla Persona</i></a>
-    <a rel="nofollow" href="#"><i class="step fi-magnifying-glass">OSM</i></a>
-    <a rel="nofollow" href="#"><i class="step fi-social-google-plus">G+</i></a>
-    <a rel="nofollow" href="#"><i class="step fi-social-twitter">Twitter</i></a>
-    <a rel="nofollow" href="#"><i class="step fi-social-facebook">Facebook</i></a>
+    <a rel="nofollow" href="{% url 'social:begin' 'openstreetmap' %}?next={{ next }}"><i class="step fi-magnifying-glass">OSM</i></a>
+    <a rel="nofollow" href="{% url 'social:begin' 'google-oauth2' %}?next={{ next }}"><i class="step fi-social-google-plus">G+</i></a>
+    <a rel="nofollow" href="{% url 'social:begin' 'facebook' %}?next={{ next }}"><i class="step fi-social-facebook">Facebook</i></a>
     </form>
 </div>
 {% endblock %}

@@ -71,6 +71,9 @@ MIDDLEWARE_CLASSES = (
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.persona.PersonaAuth',
+    #'social.backends.openstreetmap.OpenStreetMapOAuth',
+    #'social.backends.facebook.FacebookOAuth2',
+    #'social.backends.google.GoogleOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
