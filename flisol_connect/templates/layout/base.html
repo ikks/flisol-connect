@@ -9,10 +9,13 @@
 {% endblock css %}
 
 {% block base_body %}
-  <nav class="top-bar url-instances" data-url-instance-list="{% url 'api:instance' %}">
+  <nav  data-topbar="" role="navigation" class="top-bar url-instances" data-url-instance-list="{% url 'api:instance' %}">
     <!-- Title -->
     <ul class="title-area">
       <li class="name"><h1><a href="/">Flisol</a></h1></li>
+
+      <!-- Mobile Menu Toggle -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
 
     <!-- Top Bar Section -->
@@ -45,12 +48,12 @@
         <!-- Button -->
         <li>
           {% if user.is_authenticated %}
-          <a href="{% url 'user:profile_update' %}" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i></a>
+          <a href="{% url 'user:profile_update' %}" alt="{{ user.email }}" title="{% trans 'update profile' %}"><i class="step fi-torso"></i> {% trans 'Profile' %}</a>
         </li>
-        <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i></a>
+        <li><a href="{% url 'user:logout' %}" title="{% trans 'logout' %}"><i class="step fi-x-circle"></i> {% trans 'Logout' %}</a>
         </li>
         <li>
-          {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i>{% endif %}</a>
+          {% if user.is_staff %}<a class="item" role="button" href="{% url 'admin:index' %}"><i class="step fi-widget style-3"></i> {% trans 'Admin' %}</a>{% endif %}
       {% else %}
           <a href="{% url 'user:login' %}"><i class="step fi-at-sign">{% trans 'Login' %}</i></a>
       {% endif %}
