@@ -10,9 +10,16 @@ function load_map() {
 
     map.setView(new L.LatLng(-8 , -70), 3).addLayer(osm);
     $.get($('.url-instances').data('url-instance-list'), function(result){
+        var template = Handlebars.compile($('#instance-popup-template').html());
         for (var i=0; i < result.length; i++){
-            L.marker(result[i].map_center.split(',')).addTo(map).bindPopup(result[i].city_name);
+            var content = result[i];
+            content['label_subscribe'] = $('#instance-list').data('label-subscribe');
+            content['help_subscribe'] = $('#instance-list').data('help-subscribe');
+            L.marker(result[i].map_center.split(',')).addTo(map).bindPopup(template(content));
         }
+        $(document).foundation();
+        $(document).foundation('reveal', 'reflow');
+
     });
 }
 
@@ -69,8 +76,6 @@ function addr_search() {
             'label_request': $('#place-list').data('label-request'),
             'help_request': $('#place-list').data('help-request'),
         }
-        console.log($('#place-list').data('label-create'));
-        console.log($('#place-list'));
         var template = Handlebars.compile($('#result-template').html());
         $('#place-list').empty().html(template(data));
         $(document).foundation();
@@ -87,7 +92,12 @@ function look_for_flisol() {
             $('#instance-list').empty();
             if (result.length > 0) {
                 var template = Handlebars.compile($('#instance-list-template').html());
-                $('#instance-list').html(template(result));
+                var data = {
+                    'places': result,
+                    'label_subscribe': $('#instance-list').data('label-subscribe'),
+                    'help_subscribe': $('#instance-list').data('help-subscribe'),
+                }
+                $('#instance-list').html(template(data));
             }
             addr_search();
         }
@@ -122,9 +132,17 @@ $(function() {
         $('#id_instance-city_name').val($(this).closest('.data-info').data('name'));
         $('#instance-creation').foundation('reveal', 'open');
     });
-    $('#instance-list').on('click', '.js-subscribe', function(){
-        $('#id_machine-flisol_instance').val($(this).closest('.data-info').data('instance-id'));
-        $('.instance-name').html($(this).closest('.data-info').data('instance-name'));
+    $(document).on('click', '.js-preview-instance', function(){
+        var info = $(this).closest('.data-info');
+        point = info.data('map-center').split(',');
+        zoom = info.data('map-zoom');
+        map.setView(point, zoom);
+    });
+    $(document).on('click', '.js-subscribe', function(){
+        var info = $(this).closest('.data-info');
+        $('#id_machine-flisol_instance').val(info.data('instance-id'));
+        $('.instance-name').html(info.data('instance-name'));
+        map.closePopup();
         $('#div_id_subscription-comment').hide();
         $('#instance-subscription').foundation('reveal', 'open');
     });

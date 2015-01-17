@@ -68,9 +68,9 @@
             <dd><a href="#place-list">{% trans 'More options' %}</a></dd>
           </dl>
           <div class="tabs-content">
-            <div class="content active" id="instance-list">
+            <div class="content active" id="instance-list" data-label-subscribe="{% trans 'subscribe' %}" data-help-subscribe="{% trans 'hurry up when there is still place' %}">
             </div>
-            <div class="content" id="place-list" data-label-create="{% trans 'create' %}" data-help-create="{% trans 'you are the one that will create' %}" data-label-request="{% trans 'request' %}" data-help-request="{% trans 'you want a Flisol, ask for one here' %}">
+            <div class="content" id="place-list" data-label-create="{% trans 'create' %}" data-help-create="{% trans 'you are the one that will create' %}" data-label-request="{% trans 'request' %}" data-help-request="{% trans 'you want a Flisol, ask for one here' %}" >
             </div>
           </div>
       </div>
@@ -131,13 +131,23 @@
     <h2>{% trans 'you are lucky' %}</h2>
     <ul>
     {% verbatim %}
-    {{#each this}}
-      <li class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}">
-        <a href="#" class="js-subscribe"><i class="step fi-ticket"></i> {{ city_name }} - {{ instance_name }} {{ iso_code }}</a>
+    {{#each places}}
+      <li class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}" data-map-center="{{ map_center }}" data-map-zoom="{{ map_zoom }}">
+        <a href="#" class="js-preview-instance" data-dropdown="drop-preview-list-{{ id }}" aria-controls="drop-preview-list-{{ id }}" aria-expanded="false" data-options="align: right">{{ city_name }} - {{ instance_name }} {{ iso_code }}</a>
+        <ul id="drop-preview-list-{{ id }}" class="micro f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+          <li><a href="#" class="js-subscribe" alt="{{ ../help_subscribe }}" title="{{ ../help_subscribe }}"><i class="step fi-ticket"></i> {{ ../label_subscribe }}</a></li>
+        </ul>
       </li>
     {{/each}}
     {% endverbatim %}
     </ul>
+  </script>
+
+  <script type="text/x-handlebars-template" id="instance-popup-template">
+  {% verbatim %}
+  <h3>{{ city_name }} - {{ instance_name }} {{ iso_code }}</h3>
+  <p class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}" data-map-center="{{ map_center }}" data-map-zoom="{{ map_zoom }}">{{ description }} <a href="#" class="js-subscribe" alt="{{ help_subscribe }}" title="{{ help_subscribe }}"><i class="step fi-ticket"></i> {{ label_subscribe }}</a></p>
+  {% endverbatim %}
   </script>
 {% endblock %}
 
