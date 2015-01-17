@@ -21,26 +21,8 @@
     <!-- Top Bar Section -->
 
       <section class="top-bar-section">
-
-      <!-- Top Bar Left Nav Elements -->
-      <ul class="left">
-
-        <!-- Search | has-form wrapper -->
-        <li class="has-form">
-          <div class="row"><form class="searchplace">
-            <div class="small-12 columns">
-              <div class="row collapse">
-                <div class="small-10 columns">
-                  <input type="text" placeholder="¿Dónde es tu Flisol?" id="flisol-place">
-                </div>
-                <div class="small-2 columns">
-                  <a href="#" class="alert button expand" id="addr" name="addr"><i class="step fi-magnifying-glass"></i></a>
-                </div>
-              </div>
-            </div>
-          </form></div>
-        </li>
-      </ul>
+      {% block search %}
+      {% endblock %}
 
       <!-- Top Bar Right Nav Elements -->
       {% block login %}
@@ -63,100 +45,10 @@
     </section>
     <span></span>
   </nav>
-  <div id="search" class="reveal-modal small" data-reveal data-flisol-search-url="{% url 'api:instance' %}">
-      <a class="close-reveal-modal">&#215;</a>
-      <div id="">
-          <dl class="tabs" data-tab>
-            <dd class="active"><a href="#instance-list">{% trans 'The planned places' %}</a></dd>
-            <dd><a href="#place-list">{% trans 'More options' %}</a></dd>
-          </dl>
-          <div class="tabs-content">
-            <div class="content active" id="instance-list" data-label-subscribe="{% trans 'subscribe' %}" data-help-subscribe="{% trans 'hurry up when there is still place' %}">
-            </div>
-            <div class="content" id="place-list" data-label-create="{% trans 'create' %}" data-help-create="{% trans 'you are the one that will create' %}" data-label-request="{% trans 'request' %}" data-help-request="{% trans 'you want a Flisol, ask for one here' %}" >
-            </div>
-          </div>
-      </div>
-  </div>
   <div data-alert class="alert-box" style="display:none">
     <div class="alert-content"></div>
     <a href="#" class="close">&times;</a>
   </div>
-  {% basic_forms %}
   {% block content %}
-    <div class="text-center flisol-top">
-      {% if days_to_go > 0 %}
-        <h1>{% blocktrans %}{{ days_to_go }} days for Flisol{% endblocktrans %}</h1>
-      {% elif days_to_go == 0 %}
-        <h1>{% blocktrans %}Today is Flisol, hang on{% endblocktrans %}</h1>
-      {% endif %}
-        <div class="medium-12 large-4 columns">
-            <h1 class="text-center"><span class="subscription_count">{{ subscriptions }}</span> {% if subscriptions == 1 %}{%trans 'subscription' %}{% else %}{% trans 'subscriptions' %}{% endif %}</h1>
-        </div>
-        <div class="medium-12 large-4 columns">
-            <h1 class="text-center"><span class="instance_count">{{ instances }}</span> {% if instances == 1 %}{% trans 'instance' %}{% else %}{% trans 'instances' %}{% endif %}</h1>
-        </div>
-        <div class="medium-12 large-4 columns">
-            <h1><span class="volunteer_count">{{ volunteers }}</span> {% if volunteers == 1 %}{% trans 'volunteer' %}{% else %}{% trans 'volunteers' %}{% endif %}</h1>
-        </div>
-    </div>
-
-    <div id="map"></div>
   {% endblock content %}
-  <div class="flisol-footer text-center">
-      <p>{% trans 'Made with tons of love' %}. <a href="https://github.com/ikks/flisol-connect"><i class="step fi-social-github size-36"></i></a></p>
-      <p>2.014 -</p>
-      <p>{% trans 'Powered by' %}
-        <a href="http://djangoproject.com">Django</a>,
-        <a href="http://foundation.zurb.com">Foundation</a>,
-        <a href="http://leafletjs.com">Leaflet</a>,
-        <a href="http://osm.org">OSM</a>,
-        <a href="http://postgresql.org">Postgresql</a>,
-        <a href="http://redis.io">Redis</a>.</p>
-  </div>
-  <script type="text/x-handlebars-template" id="result-template">
-    <h2>{% trans 'some places for you' %} </h2>
-    <ul>
-    {% verbatim %}
-    {{#each places}}
-      <li class="data-info" data-name="{{ name }}" data-country-code="{{ country }}" data-lon="{{ lon }}" data-lat="{{ lat }}">
-        <a href="#" class="js-zoomto" data-l1="{{ bb0 }}" data-l2="{{ bb2 }}" data-l3="{{ bb1 }}" data-l4="{{ bb3 }}" data-type-node="{{ osm_type }}" data-dropdown="drop-result-{{@index}}" aria-controls="drop-result-{{@index}}" aria-expanded="false" data-options="align: right">{{ display_name }}</a>
-        <ul id="drop-result-{{@index}}" class="micro f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <li><a href="#" class="js-request-instance" alt="{{ ../help_request }}" title="{{ ../help_request }}">{{ ../label_request }} <i class="step fi-shopping-cart"></i></a></li>
-          <li><a href="#" class="js-create-instance" alt="{{ ../help_create }}" title="{{ ../help_create }}">{{ ../label_create }} <i class="step fi-star"></i></a></li>
-        </ul>
-      </li>
-    {{/each}}
-    {% endverbatim %}
-    </ul>
-  </script>
-  <script type="text/x-handlebars-template" id="instance-list-template">
-    <h2>{% trans 'you are lucky' %}</h2>
-    <ul>
-    {% verbatim %}
-    {{#each places}}
-      <li class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}" data-map-center="{{ map_center }}" data-map-zoom="{{ map_zoom }}">
-        <a href="#" class="js-preview-instance" data-dropdown="drop-preview-list-{{ id }}" aria-controls="drop-preview-list-{{ id }}" aria-expanded="false" data-options="align: right">{{ city_name }} - {{ instance_name }} {{ iso_code }}</a>
-        <ul id="drop-preview-list-{{ id }}" class="micro f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
-          <li><a href="#" class="js-subscribe" alt="{{ ../help_subscribe }}" title="{{ ../help_subscribe }}"><i class="step fi-ticket"></i> {{ ../label_subscribe }}</a></li>
-        </ul>
-      </li>
-    {{/each}}
-    {% endverbatim %}
-    </ul>
-  </script>
-
-  <script type="text/x-handlebars-template" id="instance-popup-template">
-  {% verbatim %}
-  <h3>{{ city_name }} - {{ instance_name }} {{ iso_code }}</h3>
-  <p class="data-info" data-instance-id="{{ id }}" data-iso-code="{{ iso_code }}" data-instance-name="{{ city_name }} - {{ instance_name }} {{ iso_code }}" data-map-center="{{ map_center }}" data-map-zoom="{{ map_zoom }}">{{ description }} <a href="#" class="js-subscribe" alt="{{ help_subscribe }}" title="{{ help_subscribe }}"><i class="step fi-ticket"></i> {{ label_subscribe }}</a></p>
-  {% endverbatim %}
-  </script>
-{% endblock %}
-
-{% block body_js %}
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="{% static 'js/map.js' %}"></script>
-<script src="{% static 'js/vendor/handlebars-v2.0.0.js' %}"></script>
 {% endblock %}

@@ -111,6 +111,8 @@ function replaceall(original, to_replace, replacement) {
 }
 
 $(function() {
+    if ($('#map').length === 0)
+        return;
     load_map();
     $('.searchplace').on('submit',look_for_flisol);
     $('#addr').on('click',look_for_flisol);
