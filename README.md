@@ -10,12 +10,25 @@ Sitio de prueba en http://test.installfest.info
 Mapa de ruta
 ============
 
-- [X] Hacer la estructura de backend para soportar los modelos de datos persistentes
-necesarios
-- [ ] Usar autenticación con persona, github, bitbucket, openstreetmap, facebook y googleplus.
-- [ ] Implementar las historias de usuario para solicitar y registrar una instancia y un equipo
-- [ ] las notificaciones en tiempo real junto con la opción de
-autenticarse en el sitio para poder crear una sede.
+- [X] Hacer la estructura de backend para soportar los modelos de datos
+persistentes necesarios
+- [ ] Usar autenticación con persona, github, bitbucket, openstreetmap,
+facebook y googleplus.
+  - [ ] Hacer página de administración de redes sociales para agregar y
+  eliminar
+- [X] Implementar las historias de usuario para solicitar y registrar una
+instancia y un equipo
+- [ ] las notificaciones en tiempo real junto con la opción de autenticarse en
+el sitio para poder crear una sede.
+- [ ] Hacer la página de Mi flisol en la cual puedo revisar a qué instancias
+me he inscrito y el equipo que he registrado.
+- [ ] Hacer la página de enlace con el wiki del 2.015 para ofrecer snippet de
+openstreetmap y garantizar el flujo.
+- [ ] Mejorar el admin para permitir que un administrador de sede pueda cambiar
+el estado de la instancia.
+- [ ] Crear los roles necesarios para ayudar en la administración de las
+instancias.
+
 
 Contribuir
 ==========
@@ -40,6 +53,14 @@ Información de distribuciones
 
 Puede ayudarnos colocando distribuciones(de Linux o sistemas operativos libres),
 por favor suscríbase a la lista de desarrollo, no hay que ser desarrollador :)
+
+Colaborar en administración
+---------------------------
+
+Hay un rol muy importante, el cual consiste en ayudar en la operación del
+portal autorizando o desautorizando para evitar spam y falsos positivos, no
+se requiere conocimientos técnicos para efectuarlo y con un equipo de 5
+personas será posible llevar toda la carga del portal.
 
 Su entorno local
 ----------------
