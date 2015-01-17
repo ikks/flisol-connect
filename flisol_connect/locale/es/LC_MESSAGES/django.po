@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: flisol-connect 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-16 22:13-0500\n"
+"POT-Creation-Date: 2015-01-17 00:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,107 +18,123 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: flisol_connect/settings.py:109
+#: flisol_connect/settings.py:112
 msgid "Spanish"
 msgstr ""
 
-#: flisol_connect/settings.py:110
+#: flisol_connect/settings.py:113
 msgid "Portuguese"
 msgstr ""
 
-#: flisol_connect/settings.py:111
+#: flisol_connect/settings.py:114
 msgid "English"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:48
-msgid "update profile"
+#: flisol_connect/templates/home.html:13
+msgid "Where is your Flisol?"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:50
-msgid "logout"
-msgstr ""
-
-#: flisol_connect/templates/layout/base.html:55
-msgid "Login"
-msgstr ""
-
-#: flisol_connect/templates/layout/base.html:67
+#: flisol_connect/templates/home.html:30
 msgid "The planned places"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:68
+#: flisol_connect/templates/home.html:31
 msgid "More options"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:71
+#: flisol_connect/templates/home.html:34
 msgid "subscribe"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:71
+#: flisol_connect/templates/home.html:34
 msgid "hurry up when there is still place"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:73
+#: flisol_connect/templates/home.html:36
 msgid "create"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:73
+#: flisol_connect/templates/home.html:36
 msgid "you are the one that will create"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:73
+#: flisol_connect/templates/home.html:36
 msgid "request"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:73
+#: flisol_connect/templates/home.html:36
 msgid "you want a Flisol, ask for one here"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:86
+#: flisol_connect/templates/home.html:44
 #, python-format
 msgid "%(days_to_go)s days for Flisol"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:88
+#: flisol_connect/templates/home.html:46
 msgid "Today is Flisol, hang on"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:91
+#: flisol_connect/templates/home.html:49
 msgid "subscription"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:91
+#: flisol_connect/templates/home.html:49
 msgid "subscriptions"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:94
+#: flisol_connect/templates/home.html:52
 msgid "instance"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:94
+#: flisol_connect/templates/home.html:52
 msgid "instances"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:97
+#: flisol_connect/templates/home.html:55
 msgid "volunteer"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:97
+#: flisol_connect/templates/home.html:55
 msgid "volunteers"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:104
-msgid "Made with tons of love"
-msgstr ""
-
-#: flisol_connect/templates/layout/base.html:106
-msgid "Powered by"
-msgstr ""
-
-#: flisol_connect/templates/layout/base.html:115
+#: flisol_connect/templates/home.html:61
 msgid "some places for you"
 msgstr ""
 
-#: flisol_connect/templates/layout/base.html:131
+#: flisol_connect/templates/home.html:77
 msgid "you are lucky"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:33
+msgid "update profile"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:33
+msgid "Profile"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:35
+msgid "logout"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:35
+msgid "Logout"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:38
+msgid "Admin"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:40
+msgid "Login"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:55
+msgid "Made with tons of love"
+msgstr ""
+
+#: flisol_connect/templates/layout/base.html:57
+msgid "Powered by"
 msgstr ""
