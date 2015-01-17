@@ -1,5 +1,5 @@
 {% extends "foundation/base.html" %}
-{% load staticfiles i18n flisol_event_tags %}
+{% load staticfiles i18n %}
 {% block title %}Flisol{% endblock %}
 
 {% block css %}
@@ -51,4 +51,15 @@
   </div>
   {% block content %}
   {% endblock content %}
+  <div class="flisol-footer text-center">
+      <p>{% trans 'Made with tons of love' %}. <a href="https://github.com/ikks/flisol-connect"><i class="step fi-social-github size-36"></i></a></p>
+      <p>2.014 -</p>
+      <p>{% trans 'Powered by' %}
+        <a href="http://djangoproject.com">Django</a>,
+        <a href="http://foundation.zurb.com">Foundation</a>,
+        <a href="http://leafletjs.com">Leaflet</a>,
+        <a href="http://osm.org">OSM</a>,
+        <a href="http://postgresql.org">Postgresql</a>,
+        <a href="http://redis.io">Redis</a>.</p>
+  </div>
 {% endblock %}
